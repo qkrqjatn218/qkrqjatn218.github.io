@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="/author/qkrqjatn218/feed.xml" rel="self" type="application/atom+xml" />
   <link href="/" rel="alternate" type="text/html" />
-  <updated>2020-12-13T14:15:06+09:00</updated>
+  <updated>2020-12-13T22:11:45+09:00</updated>
   <id>/author/qkrqjatn218/feed.xml</id>
 
   
@@ -30,6 +30,1391 @@
   
   
 
+  
+    <entry>
+      <title type="html">network(2)</title>
+      <link href="/network(2)" rel="alternate" type="text/html" title="network(2)" />
+      <published>2020-12-13T00:00:00+09:00</published>
+      <updated>2020-12-13T00:00:00+09:00</updated>
+      <id>/network(2)</id>
+      <content type="html" xml:base="/network(2)">&lt;p&gt;&lt;strong&gt;#IP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;VLSM(variable length subnet mask)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;각 서브넷(Sub-Network) 마다 가변 길이의 서브네트 마스크를 적용하는 기법&lt;/p&gt;
+
+  &lt;p&gt;각 서브넷이 각기 다른 크기(호스트 수 또는 주소 배정 수)를 갖을 수 있음&lt;/p&gt;
+
+  &lt;p&gt;Classful Addressing 처럼 고정 길이의 서브네트 마스크를 적용하지 않고,&lt;/p&gt;
+
+  &lt;p&gt;호스트 수가 적은 네트워크에는 긴 마스크, 그 반대에는 짧은 마스크 적용 등&lt;/p&gt;
+
+  &lt;p&gt;. 동일 네트워크 주소공간에서 다른 크기의 서브네트 사용 허용(서브네트의 서브넷팅)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;IP 주소 부족을 극복하기 위한 방법&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;ol&gt;
+    &lt;li&gt;IPv6 주소체계 - 128bit 주소 길이를 사용&lt;/li&gt;
+    &lt;li&gt;사설네트워크 +NAT(Network Address Translation)&lt;/li&gt;
+    &lt;li&gt;서브넷팅&lt;/li&gt;
+    &lt;li&gt;DHCP&lt;/li&gt;
+  &lt;/ol&gt;
+
+  &lt;p&gt;NAT : 사설망과 공인망을 전환하는 기술(ISP[internet service provider]에서 할당받은 공인된 ip 하나를 NAT를 이용해 여러개의 사설 ip로 변환해줌으로써 사설네트워크를 형성할 수 있음)&lt;/p&gt;
+
+  &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;사설 네트워크 아이피 대역
+
+10.0.0.0 ~ 10.255.255.255  사설 네트워크에서 사용(A클래스)
+
+172.16.0.0 ~ 172.31.255.255 사설 네트워크에서 사용 (B클래스)
+
+192.168.0.0 ~ 192.168.255.255 사설 네트워크에서 사용  (C클래스)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;#PROTOCOL&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;packet&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2 layer&lt;/th&gt;
+      &lt;th&gt;3layer&lt;/th&gt;
+      &lt;th&gt;4 layer&lt;/th&gt;
+      &lt;th&gt;7 layer&lt;/th&gt;
+      &lt;th&gt;2 layer&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ethernet_header&lt;/td&gt;
+      &lt;td&gt;IP_header, ARP_header,ICMP_header&lt;/td&gt;
+      &lt;td&gt;TCP_header, UDP_header&lt;/td&gt;
+      &lt;td&gt;HTTP_info(data)&lt;/td&gt;
+      &lt;td&gt;Trailer_info&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;IP(Internet Protocol) header&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;table&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th style=&quot;text-align: center&quot;&gt;IP HEADER&lt;/th&gt;
+        &lt;th&gt;(Ip 헤더는 일반적으로 20바이트 크기)&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=&quot;text-align: center&quot;&gt;version&lt;/td&gt;
+        &lt;td&gt;ipv4, ipv6등 ip 버전 확인용 (4bit)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&quot;text-align: center&quot;&gt;IHL&lt;/td&gt;
+        &lt;td&gt;IP Header Length : 헤더길이 /4 값이 저장b일반적으로 5   (4bit)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&quot;text-align: center&quot;&gt;TOS&lt;/td&gt;
+        &lt;td&gt;Type of Service 거의 사용되지 않음 QOS 와 관련됨&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&quot;text-align: center&quot;&gt;Total Length&lt;/td&gt;
+        &lt;td&gt;ip헤더 길이 + 데이터 길이&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&quot;text-align: center&quot;&gt;Identification&lt;/td&gt;
+        &lt;td&gt;단편화된 데이터 조각을 구분하기 위한 구분자 (쪼개진 데이터들의 식별값은 같다)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&quot;text-align: center&quot;&gt;IP Flags&lt;/td&gt;
+        &lt;td&gt;단편화 옵션&lt;br /&gt; D : Do not fragment		ex) D = 0&lt;br /&gt; M : More Fragment		ex) M = 1(쪼개진 데이터)  M = 0(더이상 쪼개질 수 없는 데이&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&quot;text-align: center&quot;&gt;fragment offset&lt;/td&gt;
+        &lt;td&gt;단편화된 조각의 위치&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&quot;text-align: center&quot;&gt;TTL(time to live)&lt;/td&gt;
+        &lt;td&gt;네트워크에서 패킷의 수명(라우터 같은 것을 지날 때 마다 1씩 감소)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&quot;text-align: center&quot;&gt;protocal&lt;/td&gt;
+        &lt;td&gt;데이터에 포함된 상위 프로토콜&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&quot;text-align: center&quot;&gt;header checksum&lt;/td&gt;
+        &lt;td&gt;header에 에러가 있는지 체크&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&quot;text-align: center&quot;&gt;ip option(옵션)&lt;/td&gt;
+        &lt;td&gt;p전달에 걸린 시간값, 라우터에게 특별한 명령을 전달하는 값&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;TCP 와 UDP 비교&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;TCP&lt;/th&gt;
+      &lt;th&gt;UDP&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;안정적인 전송이 목표&lt;/td&gt;
+      &lt;td&gt;단순하고 빠른 데이터 전송이 목표&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;연결수립(연결지향형 프로토콜)&lt;/td&gt;
+      &lt;td&gt;연결수립하지 않음&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;흐름제어가 가능&lt;/td&gt;
+      &lt;td&gt;흐름제어가 불가능&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;긴데이터 전송에 적합&lt;/td&gt;
+      &lt;td&gt;짧은 데이터 전송에 적합&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;대부분의 서비스에 사용한다&lt;/td&gt;
+      &lt;td&gt;일부 서비스에 사용한다&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;TCP(transmission control protocol) header&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;table&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;TCP HEADER&lt;/th&gt;
+        &lt;th&gt;(기본크기 20Byte)&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;source port&lt;/td&gt;
+        &lt;td&gt;출발지 포트&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;destination port&lt;/td&gt;
+        &lt;td&gt;목적지 포트&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;sequence number&lt;/td&gt;
+        &lt;td&gt;출발지에서 보내는 넘버&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;acknowledgment number&lt;/td&gt;
+        &lt;td&gt;목적지에서 보내는 넘버&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;header length&lt;/td&gt;
+        &lt;td&gt;tcp header 길이&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;tcp flags&lt;/td&gt;
+        &lt;td&gt;U : URG : 긴급한 데이터가 있을 경우                                                  A : ACK : 데이터 수신 확인                                                                  P : PSH : 보내는 데이터를 버퍼에 저장하지 않고 바로 전달                             R : RST : 연결을 끊거나 재수립 요청                                                                 S : SYN  : 연결 수립할때 사용                                                               F : FIN : 연결 종료할때 사용&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;window size&lt;/td&gt;
+        &lt;td&gt;호스트가 수신 할 수 있는 버퍼(패킷을 받는 저장공간) 크기                   - sliding window : 두 개의 네트워크 호스트간의 패킷의 흐름을 제어하기 위한 방법&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;checksum&lt;/td&gt;
+        &lt;td&gt;오류체크 (data,header)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;urgent pointer&lt;/td&gt;
+        &lt;td&gt;긴급한 데이터의 위치 값&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+
+  &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;seq ,ack 의 통신방법
+1. 보내는 쪽은 임의의 숫자를 지정하여 자신의 seq를 생성
+2. 데이터 송신후 자신의 seq값에 보낸 데이터의 양만큼의 숫자를 증가시킴
+3. 받는쪽에서는 전송받은 seq와 데이터양을 확인하고 ack 값을 계산해서 응답으로 보냄
+4. ack는 전송받은 데이터의 양을 표시
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+  &lt;p&gt;&lt;img src=&quot;C:\Users\USER\AppData\Roaming\Typora\typora-user-images\image-20201030112153929.png&quot; alt=&quot;image-20201030112153929&quot; style=&quot;zoom: 80%;&quot; /&gt;&lt;/p&gt;
+
+  &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;3way handshake
+1 클라이언트가 서버에게 연결 시도 : SYN Flag
+2 서버가 클라이언트에게 연결 허용 알림 : SYN +ACK Flag
+3 클라이언트가 수신 확인 전송 : ACK Flag
+
+
+4way handshake
+1. 연결을 끊고자 하는 쪽에서 연결 종료 시도 : FIN + ACK Flag
+2. 상대방에서 연결종료신호 수신 확인 : ACK Flag
+3. 상대방도 연결종료 시도 : FIN + ACK Flag
+4. 연결을 끊는 쪽에서도 연결종료 수신 확인 : ACK
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;UDP(User Datagram Protocol) Header&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;table&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            &lt;th&gt;UDP HEADER&lt;/th&gt;
+            &lt;th&gt;기본크기 8Byte&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+          &lt;tr&gt;
+            &lt;td&gt;source port&lt;/td&gt;
+            &lt;td&gt;출발지 포트&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;destination port&lt;/td&gt;
+            &lt;td&gt;목적지 포트&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;length&lt;/td&gt;
+            &lt;td&gt;길이&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;checksum&lt;/td&gt;
+            &lt;td&gt;오류체크&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;ARP(Address Resolution Protocol) protocol&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;ol&gt;
+    &lt;li&gt;대상을 찾기 위해 ip주소에 해당하는 mac 주소를 arp 로 요청(브로드캐스트)&lt;/li&gt;
+    &lt;li&gt;해당 ip를 가지고 있는 호스트는 ARP 요청을 전송한 호스트에게 ARP 응답을 전송한다(유니캐스트)&lt;/li&gt;
+  &lt;/ol&gt;
+
+  &lt;table&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;ARP HEADER&lt;/th&gt;
+        &lt;th&gt; &lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;hardware type&lt;/td&gt;
+        &lt;td&gt;2 layer protocol type(1, Ethernet)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;protocol type&lt;/td&gt;
+        &lt;td&gt;3 layer protocol type(0800, ipv4)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;hardware address length&lt;/td&gt;
+        &lt;td&gt;MAC 주소의 길이 (6Byte)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;protocol address length&lt;/td&gt;
+        &lt;td&gt;IP 주소의 길이 (4Byte)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;opcode&lt;/td&gt;
+        &lt;td&gt;1(ARP request), 2(ARP rely), 3(RARP request), 4(RARP rely), 5 이상(다른 종류 ARP 요청/ 응답)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;sender hardware address&lt;/td&gt;
+        &lt;td&gt;arp request 를 보낸 호스트의 mac 주소&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;sender protocol address&lt;/td&gt;
+        &lt;td&gt;arp request 를 보낸 호스트의 ip 주소&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;target hardware address&lt;/td&gt;
+        &lt;td&gt;arp rely 한 호스트의 mac 주소&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;target protocol address&lt;/td&gt;
+        &lt;td&gt;arp rely 한 호스트의 ip 주소&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;ICMP(Internet Control Message Protocol) protocol&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;ol&gt;
+    &lt;li&gt;질의 메세지(0 , 8 , 13 ,14 ,15 ,16 ,17 ,18 ,9, 10)&lt;/li&gt;
+    &lt;li&gt;오류 보고 메세지(3, 4, 5, 11, 12)&lt;/li&gt;
+    &lt;li&gt;인터넷 제어 메시지 프로토콜&lt;/li&gt;
+  &lt;/ol&gt;
+
+  &lt;table&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;ICMP_HEADER&lt;/th&gt;
+        &lt;th&gt; &lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;type&lt;/td&gt;
+        &lt;td&gt;&lt;strong&gt;0&lt;/strong&gt; : echo 응답 (echo reply) -&amp;gt; 핑 응답 : ip 호스트 진단                                                                                   &lt;strong&gt;8&lt;/strong&gt; : echo 요청 (echo request) -&amp;gt; 핑 요청 : ip 호스트 진단                                                                               &lt;strong&gt;3&lt;/strong&gt; : 수신처 도달 불가능 (Destination Unreachable) : 목적지 도달 불가능 알림                                                                                                  &lt;strong&gt;4&lt;/strong&gt; : 발신 제한 (source quench) : 네트워크가 혼잡하여 데이터 폐기 알림                                                                                                          &lt;strong&gt;5&lt;/strong&gt; : 라우터 변경 (redirect) : 라우터가 최적 경로를 사용하지 않는 호스트 발견시 대체 경로를 알려주는 용도                                                                                                                                                                   &lt;strong&gt;11&lt;/strong&gt; : 시간 초과 (time exceeded) : TTL이 0이 되서 더이상 전송이 안된다는 사실을 알림                                                                                  12 : 파라미터 불량 (parameter problem) : 헤더 값에 문제가 있을시 알림                                                                                                         13 : 타임 스탬프 요청 (timestamp request) : 오고가는데 필요한 왕복 시간 확인                                                                                                       14 : 타임 스탬프 응답 (timestamp reply) : 오고가는데 필요한 왕복 시간 확인                                                                                                  15 : 정보 요구 (information request) :  ip가 없는 호스트에서 ip 설정을 위해 ip 등을 요청할때                                                                          16 : 정보 응답 (information replay)  ip가 없는 호스트에서 ip 설정을 위해 ip 등을 요청할때                                                                                   17 : 주소 마스크 요구 (adrress mask request)   호스트가 라우터 등에게 서브넷 마스크 요청할때 사용                                                          18 : 주소 마스크 응답 (address mask repley)  호스트가 라우터 등에게 서브넷 마스크 요청할때 사용&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;code&lt;/td&gt;
+        &lt;td&gt;메시지의 종류를 타입보다 좀 더 세분화하는 추가적인 코드&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;checksum&lt;/td&gt;
+        &lt;td&gt;메시지 오류 검사 기능&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;other message specific information&lt;/td&gt;
+        &lt;td&gt;타입과 코드 값에 따라 변경&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;IGMP(Internet Group Message Protocol) protocol&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;인터넷 그룹 메시지 프로토콜&lt;/p&gt;
+
+  &lt;p&gt;인터넷에 연결한 컴퓨터가 멀티캐스트 그룹을 주위의 라우터에 알릴 수 있는 수단을 제공하는 프로토콜&lt;/p&gt;
+
+  &lt;p&gt;GMP는 멀티캐스트 라우터가 주기적으로 서브넷 호스트 컴퓨터 그룹에 IGMP 쿼리 메시지를 전송하고&lt;strong&gt;,&lt;/strong&gt; 호스트 컴퓨터는 IGMP 쿼리 메시지에 응답하며&lt;strong&gt;,&lt;/strong&gt; 자신이 가입하려는 그룹 주소 정보를 IGMP 리포트 메시지를 이용하여 라우터에 알려주는 방식으로 동작한다&lt;/p&gt;
+&lt;/blockquote&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>qkrqjatn218</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="network" />
+      
+
+      
+        <summary type="html">#IP</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">network basic command</title>
+      <link href="/network-basic-command" rel="alternate" type="text/html" title="network basic command" />
+      <published>2020-12-13T00:00:00+09:00</published>
+      <updated>2020-12-13T00:00:00+09:00</updated>
+      <id>/network%20basic%20command</id>
+      <content type="html" xml:base="/network-basic-command">&lt;p&gt;&lt;strong&gt;#네트워크 명령어&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;ipconfig [네트워크 인터페이스 정보 확인]&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;옵션&lt;/p&gt;
+
+        &lt;table&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;
+              &lt;th&gt;형태&lt;/th&gt;
+              &lt;th&gt;의미&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;td&gt;/all&lt;/td&gt;
+              &lt;td&gt;mac(물리적주소)주소 등&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;td&gt;/release&lt;/td&gt;
+              &lt;td&gt;ip 주소 해제하여 네트워크 연결을 끊음&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;td&gt;/renew&lt;/td&gt;
+              &lt;td&gt;ip 주소를 새롭게 갱신하여 네트워크 재연결&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;netstat [사용중인 port 정보 확인]&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;옵션&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;netstat -an (전체 포트 정보 표시 및 포트 번호를 숫자로 표시)
+     
+netstat -ano (+PID정보)
+     
+netstat -anb (+실행프로세스)
+-----------------------------------------------------------------------------
+상태
+LISTENING : 대기상태
+ESTABLISHED : 연결됨
+TIME_WAIT : 타임아웃
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;nslookup [DNS 조회]&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;방법&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nslookup
+&amp;gt; [도메인네임]             (도메인네임에 해당하는 ip주소 출력)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;ping [상대방 호스트와 연결 상태를 확인하기 위해 사용, icmp 프로토콜 사용]&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;방법&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ping [host ip주소]
+-----------------------------------------------------------------------------
+TTL(time to live) =128(윈도우)
+TTL(time to live) =64(대체로 리눅스,안드로이드)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;tracert [해당 ip주소로 가는 경로 추적,icmp 프로토롤 사용]&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;방법&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tracert [ip주소]
+&amp;gt; 경로 출력
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;arp [adress resolution protocol, ip주소를 mac 주소를 매칭]&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;방법(근거리에서는 mac주소로 통신, 원거리에서는 ip주소로 통신)&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;arp -a			(ip주소와 매칭되는 mac주소 캐쉬 확인)
+arp -d			(캐쉬가 삭제됨)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;route print [라우팅 테이블 확인]&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;방법(라우팅 테이블에는 최적의 경로에 대한 정보를 가지고 있음)&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;route print
+-----------------------------------------------------------------------------
+네트워크 대상: 목표지점
+인터페이스: 시작지점
+메트릭: 숫자가 클수록 우선순위가 우위, 경로 지정시 필요
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;hostname [호스트 이[름 확인]&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;net user [사용자계정 확인]&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;#네트워크 형태&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;LAN(lan area network)&lt;/p&gt;
+
+  &lt;p&gt;WAN(wide area network)&lt;/p&gt;
+
+  &lt;p&gt;CAN(campus area network)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;intranet(사설네트워크)&lt;/p&gt;
+
+    &lt;p&gt;-VPN(virtual private network) : 여러 곳에 퍼져있는 컴퓨터들을 잇는 사설 네트워크를 만들 때, 일일이 전선으로 연결하기는 돈이 많이 들고 물리적으로 보안에 취약하므로, 그 대신 인터넷 네트워크와 암호화 기술을 이용하여 통신 시스템을 구축하는 것을 말한다&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;#네트워크 접속장치&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;LAN 카드(NIC카드) [외부 네트워크와 빠른 속도로 데이터를 송수신할 수 있게 컴퓨터 내에 설치하는 확장 카드를 말한다]
+    &lt;ul&gt;
+      &lt;li&gt;각 LAN 카드에는 주민등록번호처럼 고유의 식별코드가 있다. 이렇게 LAN 카드에 할당된48비트 물리적 주소를 MAC 주소(Media Access Control Address)라고 한다&lt;/li&gt;
+      &lt;li&gt;MAC 주소중 OUI(앞의 24비트)는 LAN 칩셋 제조사를 의미하는 고유 코드고, 뒤의 24비트는 제품의 일련번호와 같이 부여되는 것이므로 전 세계에서 유일한 내 컴퓨터만의 LAN 카드 고유 번호가 된다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;허브(HUB)  [여러 대의 컴퓨터를 손쉽게 연결하는 장치]
+    &lt;ul&gt;
+      &lt;li&gt;한 포트에서 수신된 신호들은 허브의 다른 모든 포트로 즉시 재전송되며, 모든 입력과 출력은 서로 연결되어 있어 여러 개의 노드가 똑같은 중계기를 공유할 수 있도록 해준다&lt;/li&gt;
+      &lt;li&gt;단순히 전기적 신호를 복제해 여러 곳으로 전송하기 때문에 데이터 속도를 느리게 하고, 보안에도 취약함, 데어터 송수신이 동시에 안됌, 현재는 사용하지 않음&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;스위치(Switch) [컴퓨터에 할당되는 대역폭을 극대화시켜주는 장치]
+    &lt;ul&gt;
+      &lt;li&gt;허브와 동일한 방식으로 작동하지만 수신하는 데이터의 의도한 대상을 식별할 수 있으므로 데이터를 수신하기로 되어 있는 컴퓨터에만 해당 데이터를 보낸다. 또한 스위치는 데이터를 동시에 송수신할 수 있으므로 허브보다 빠른 속도로 데이터를 보낼 수 있다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;브릿지(Bridge) [두 개 이상의 근거리 통신망을 연결하여 하나의 네트워크로 만들어 주는 장치]
+    &lt;ul&gt;
+      &lt;li&gt;근거리 통신망에서 하나의 장치가 데이터를 송신할 때 다른 장치도 데이터를 송신하면 충돌이 발생한다. 이처럼 네트워크에 노드 수가 늘어나면 충돌이 발생할 확률이 높고 통신속도도 떨어지는데, 브리지를 이용하면 문제를 해결할 수 있다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;게이트웨이(게이트웨이 주소와 다름) [종류가 다른 두 개 이상의 네트워크를 상호 접속하여 정보를 주고받을 수 있는 장치다]
+    &lt;ul&gt;
+      &lt;li&gt;브리지와 달리 서로 다른 프로토콜 통신망 간에도 프로토콜을 변환하여 정보를 주고받을 수 있다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;중계기(Repeater)
+    &lt;ul&gt;
+      &lt;li&gt;접속 시스템의 수를 증가시키거나 네트워크 전송 거리를 연장하려고 사용하는 장치로, 네트워크에서 신호를 수신하여 증폭한 후 다음 구간으로 재전송하는 역할을 한다&lt;/li&gt;
+      &lt;li&gt;장거리로 전송하면 신호가 약해지거나 감쇠되는데, 중계기는 노드 사이의 케이블에서 신호를 증폭시켜 이문제를 해결한다. 중계기는 신호를 증폭시키기만 할 뿐 데이터 내용은 변경하지 않으며, 근거리 통신망을 구성하는 세그먼트들을 확장하거나 서로 연결하는 데 주로 사용한다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;라우터(Router) [서로 구조가 다른 망을 연결할 수 있어 근거리 통신망(LAN)과 대도시 통신망(MAN), 광대역 통신망(WAN)을 연결하는 데 사용]
+    &lt;ul&gt;
+      &lt;li&gt;IP 주소를 바탕으로 데이터가 수신지까지 갈수 있는 경로를 검사하여 효율적인 경로를 선택하는 라우팅 기능도 수행한다&lt;/li&gt;
+      &lt;li&gt;라우팅은 라우터에 있는 라우팅 테이블이 결정하는데, 라우팅테이블은 인터넷상에서 수신지의 주소를 토대로 경로상의 다음 주소를 결정한다&lt;/li&gt;
+      &lt;li&gt;라우터를 사용하면 서로 다른 네트워크(홈 네트워크와 인터넷) 간에 데이터를 전송할 수 있다. 라우터에는 이더넷 케이블을 사용한 유선 라우터와 무선 라우터가 있다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;#네트워크 접속형태&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;성형(star형)&lt;/p&gt;
+
+  &lt;p&gt;링형(Ring)&lt;/p&gt;
+
+  &lt;p&gt;버스형(Bus)&lt;/p&gt;
+
+  &lt;p&gt;트리형(Tree)&lt;/p&gt;
+
+  &lt;p&gt;그물형(Mesh topology)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;#네트워크 전송매체&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;유선 전송매체(동축케이블, 꼬임선, 광섬유케이블)&lt;/p&gt;
+
+  &lt;p&gt;무선 전송매체(라디오파, 지상 마이크로파, 위성 마이크로파)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;#통신방식&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;다른컴퓨터에 데이터 전송 서비스를 제공하는 컴퓨터를 ‘서버’라 하고, 서버에서 보내주는 데이터 서비스를 수신하는 컴퓨터를 ‘클라이언트’라고 한다&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;유니캐스트 1:1 통신 (서버와 클라이언트간에)&lt;/li&gt;
+  &lt;li&gt;멀티캐스트 1:다수 통신 224.0.0.0 ~ 239.255.255.255&lt;/li&gt;
+  &lt;li&gt;브로드캐스트 1:모두 통신 FF:FF:FF:FF:FF:FF&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;#근거리통신&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;csma/cd(carrier sense multiple access with collision detection)
+    &lt;ul&gt;
+      &lt;li&gt;CSMA/CD(반송파 감지 다중 접근/충돌 검출) 방식은 버스형 통신망으로 알려진 이더넷에 주로 사용한다&lt;/li&gt;
+      &lt;li&gt;CSMA/CD 방식은 데이터를 송신하기 전에 반송파 여부를 감지하는데,반송파가 감지되면 다른 컴퓨터(스테이션)에서 데이터 송신 중임을 판단하여 데이터를 전송하지 않는다&lt;/li&gt;
+      &lt;li&gt;하지만 반송파가 감지되지 않으면 컴퓨터가 전송매체를 사용하지 않는 것으로 판단하여 데이터 를 전송한다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>qkrqjatn218</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="network" />
+      
+
+      
+        <summary type="html">#네트워크 명령어</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">network(1)</title>
+      <link href="/network(1)" rel="alternate" type="text/html" title="network(1)" />
+      <published>2020-12-13T00:00:00+09:00</published>
+      <updated>2020-12-13T00:00:00+09:00</updated>
+      <id>/network(1)</id>
+      <content type="html" xml:base="/network(1)">&lt;p&gt;&lt;strong&gt;#무선 통신&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;무선 LAN&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;케이블 설치고민 없이 쉽개 네트워크 구축 가능 단말기의 이동이 자유로움&lt;/p&gt;
+
+  &lt;p&gt;비싸고 느리다&lt;/p&gt;
+
+  &lt;p&gt;IEEE 에서 무선 LAN 표준으로 208.11 ,208.11n, 208.11b, 208.11g 등 계속 지정하는데 현재 802.11n 규격이 자주 사용되고 있다&lt;/p&gt;
+
+  &lt;p&gt;802.11n : 2.4GHZ 주파수와 5GHZ 주파수를 사용하며 최대 300Mbps 까지 전속속소를 제공함&lt;/p&gt;
+
+  &lt;p&gt;802.11ac : 전송속도가 이론적으로 최대 6.93GB / 5GHZ 주파수 사용&lt;/p&gt;
+
+  &lt;p&gt;802.11ax : Wi-Fi6  / 2.4GHZ 주파수와 5GHZ 주파수를 사용 / 5GHZ 주파수의 문제점인 약한 신호 개선&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;무선LAN 접근방식&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;CSMA/CA : CSMA/CD와 유사한 매체접근방식으로 패킷을 전송하기전 짧은 제어메세지를 먼저 전송하여 네트워크 사용여부를 파악하고 패킷을 전송한다&lt;/p&gt;
+
+  &lt;p&gt;데이터 암호화 : 유선 케이블과 달리 무선 LAN 무선전파에 누구나 참여 할 수 있다는 문제가 있고 이에 대한 보안책으로 데이터 암호화 기술이 사용된다&lt;/p&gt;
+
+  &lt;p&gt;WEP → WPA → WPA2 → WPA3(작년에 출시됨)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;#근거리 통신&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;이더넷(근거리 통신 프로토콜)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;C:\blogmaker\assets\images\ethernet-header.jpg&quot; alt=&quot;이더넷 헤더&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;이더넷 헤더
+
+&amp;gt;preamble - 이더넷 헤더에 포함되지 않음
+         - 이더넷 신호가 전송됨을 알림
+
+10101010 x 7 + 10101011
+
+10101011 -&amp;gt; SFD (Start of Frame Delimeter)
+
+&amp;gt;destination address 6바이트 -&amp;gt; 도착지 MAC 주소
+&amp;lt;source Address 6바이트 -&amp;gt; 출발지 MAC 주소
+
+&amp;gt;ethernet type : 상위 프로토콜 종류
+ip : 0x0800
+arp : 0x0806
+..
+
+&amp;gt;FCS : Freame Check Sequence : checksum 기능 4바이트 -&amp;gt; 오류체크하는 기능
+
+이더넷 헤더의 길이 : 14바이트
+이더넷 데이터의 길이 : 46-1500바이트
+
+꼬리 4바이트를 제외한 이더넷 프레임의  최대 길이 : 1514바이트
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;와이어샤크 (wireshark) 
+-&amp;gt; 패킷 캡쳐 프로그램
+-&amp;gt; GUI를 통해 패킷 분석&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;패킷 리스트  : 캡쳐한 패킷 목록
+패킷 디테일  : 선택한 패킷의 헤더 정보 정리
+패킷 바이트  : 선택한 패킷의 실제 내용
+
+와이어 샤크 필터링 방법(간단한 필터링)
+
+ip.addr ==(ip 필터링) ip.dst ==(ip 목적지로 필터링) ip.src ==(ip 출발지로 필터링)
+
+tcp.port ==(포트 필터링) udp.port ==(포트 필터링)
+
+tcp.dstport ==  tcp.srcport == 
+
+||(or)   &amp;amp;&amp;amp;(and)
+
+ex)
+&amp;gt; ip.addr == 220.73.173.104 &amp;amp;&amp;amp; tcp.port == 80
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;#포트 주소&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;동일한 ip를 가진 시스템 내에서 프로세스를 구분하기 위한 주소&lt;/p&gt;
+
+  &lt;p&gt;0 - 65535 포트 사용&lt;/p&gt;
+
+  &lt;p&gt;0 - 1023 : system port(잘알려진 서비스들이 사용함)&lt;/p&gt;
+
+  &lt;p&gt;1024 - 49151 : user port(응용프로그램들이 사용함)&lt;/p&gt;
+
+  &lt;p&gt;49152 - 65535 : dynamic port : 접속을 하는 용도로 사용&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FTP : 21, 20   SSH : 22   TELNET : 23  SMTP : 25   DNS : 53 (udp)
+TFTP : 69 (udp)  HTTP : 80   HTTPS : 443   pop3(메일관련 프로토콜) : 110
+netbios : 137~139 (udp)  IMAP(메일관련 프로토콜) : 143   SMB : 445
+원격 데스크톱 : 3389   SNMP : 161,162 (udp)  DHCP : 67 (udp)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;#광역통신&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Circuit Switching (회선교환방식)&lt;/p&gt;
+
+  &lt;p&gt;message switching (메세지교환방식)&lt;/p&gt;
+
+  &lt;p&gt;Packet Switching (패킷교환방식)&lt;/p&gt;
+
+  &lt;p&gt;Cell Switching (ATM 교환방식)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;#OSI 계층&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;application layer(7) : 어플리케이션이 실제 작용하여 서비스를 작동하는 계층&lt;/p&gt;
+
+  &lt;p&gt;presentation layer(6) : 어플리케이션이 만들어내는 데이터를 표현하는 계층&lt;/p&gt;
+
+  &lt;p&gt;session layer(5) : 송신자와 수신자의 연결상태를 관리하는 역할&lt;/p&gt;
+
+  &lt;p&gt;transport layer(4) : 네트워크 전송과 관련하여 오류, 흐름제어 등의 기능을 통헤 신뢰성있는 정상적인 데이터 전송이 가능하게 함, 포트 번화를 통해 하나의 통신장치 안에서 각 어플리케이션을 구분을 가능하게 함&lt;/p&gt;
+
+  &lt;p&gt;network layer(3) : 데이터를 목적지까지 가장 빠르게 갈 수 있는 경로를 찾음(라우팅)&lt;/p&gt;
+
+  &lt;p&gt;data link layer(2) : 물리계층의 단순한 전기신호를 의미있는 데이터로 전환하여 인접한 네트워크 장비끼리 통신을 가능하게 하는 역할&lt;/p&gt;
+
+  &lt;p&gt;physical layer(1) : 전기적, 기계적 규칙 등을 정의하여 네크워킈가 물리적으로 송수신이 가능하게 하는 계층&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;layer&lt;/th&gt;
+      &lt;th&gt;PDU&lt;/th&gt;
+      &lt;th&gt;Protocol&lt;/th&gt;
+      &lt;th&gt;장비&lt;/th&gt;
+      &lt;th&gt; &lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;application layer&lt;/td&gt;
+      &lt;td&gt;data&lt;/td&gt;
+      &lt;td&gt;http, ftp, snmp,dns, dhcp&lt;/td&gt;
+      &lt;td&gt;L7&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;presentation layer&lt;/td&gt;
+      &lt;td&gt;data&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;session layer&lt;/td&gt;
+      &lt;td&gt;data&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;transport layer&lt;/td&gt;
+      &lt;td&gt;segement&lt;/td&gt;
+      &lt;td&gt;TCP, UDP&lt;/td&gt;
+      &lt;td&gt;L4 switch&lt;/td&gt;
+      &lt;td&gt;port&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;network layer&lt;/td&gt;
+      &lt;td&gt;packet&lt;/td&gt;
+      &lt;td&gt;IP, IGMP, ICMP&lt;/td&gt;
+      &lt;td&gt;router, L3 switch&lt;/td&gt;
+      &lt;td&gt;IP&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;data link layer&lt;/td&gt;
+      &lt;td&gt;prame&lt;/td&gt;
+      &lt;td&gt;Ethernet&lt;/td&gt;
+      &lt;td&gt;switch&lt;/td&gt;
+      &lt;td&gt;MAC&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;physical layer&lt;/td&gt;
+      &lt;td&gt;bit&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;hub, repeater, cable, NIC&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;#IP adress&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;인터넷에 연결된 모든 컴퓨터에는 고유의 주소가 부여&lt;/p&gt;
+
+  &lt;p&gt;IP 주소는 8비트 크기의 필드 네 개를 모아서 구성한 32비트(4바이트) 논리 주소&lt;/p&gt;
+
+  &lt;p&gt;일반 우편 주소를 시, 동, 번지 등으로 구분하는 것처럼 IP 주소도 네트워크 주소(Net ID)와 호스트 주소(Host ID)로 구분&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;A CLASS&lt;/p&gt;
+
+    &lt;p&gt;-2진법  = &lt;a href=&quot;network ID&quot;&gt;00000000&lt;/a&gt;.&lt;a href=&quot;host ID&quot;&gt;00000000.00000000.00000000&lt;/a&gt; ~&lt;/p&gt;
+
+    &lt;p&gt;​                   &lt;a href=&quot;network ID&quot;&gt;01111111&lt;/a&gt;.&lt;a href=&quot;host ID&quot;&gt;11111111.11111111.11111111&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;-10진법 =  &lt;a href=&quot;network ID&quot;&gt;0&lt;/a&gt;.&lt;a href=&quot;host ID&quot;&gt;0.0.0&lt;/a&gt; ~ &lt;a href=&quot;network ID&quot;&gt;127&lt;/a&gt;.&lt;a href=&quot;host ID&quot;&gt;255.255.255&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;B CLASS&lt;/p&gt;
+
+    &lt;p&gt;-2진법  =  &lt;a href=&quot;network ID&quot;&gt;10000000.00000000&lt;/a&gt;.&lt;a href=&quot;host ID&quot;&gt;00000000.00000000&lt;/a&gt; ~&lt;/p&gt;
+
+    &lt;p&gt;​                   &lt;a href=&quot;network ID&quot;&gt;10111111.11111111&lt;/a&gt;.&lt;a href=&quot;host ID&quot;&gt;11111111.11111111&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;-10진법 =  &lt;a href=&quot;network ID&quot;&gt;128.0&lt;/a&gt;.&lt;a href=&quot;host ID&quot;&gt;0.0&lt;/a&gt; ~&lt;a href=&quot;network ID&quot;&gt;191.255&lt;/a&gt;.&lt;a href=&quot;host ID&quot;&gt;255.255&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;C CLASS&lt;/p&gt;
+
+    &lt;p&gt;-2진법  =  &lt;a href=&quot;network ID&quot;&gt;11000000.00000000.00000000&lt;/a&gt;.&lt;a href=&quot;host ID&quot;&gt;00000000&lt;/a&gt; ~&lt;/p&gt;
+
+    &lt;p&gt;​                   &lt;a href=&quot;network ID&quot;&gt;11011111.11111111.11111111&lt;/a&gt;.&lt;a href=&quot;bost ID&quot;&gt;111111111&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;-10진법 =  &lt;a href=&quot;network ID&quot;&gt;192.0.0&lt;/a&gt;.&lt;a href=&quot;host ID&quot;&gt;0&lt;/a&gt; ~&lt;a href=&quot;network ID&quot;&gt;233.255.255&lt;/a&gt;.&lt;a href=&quot;host ID&quot;&gt;255&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;D CLASS&lt;/p&gt;
+
+    &lt;p&gt;-2진법 = 11100000.00000000.00000000.00000000 ~&lt;/p&gt;
+
+    &lt;p&gt;​                   11101111.11111111.11111111.111111111&lt;/p&gt;
+
+    &lt;p&gt;-10진법 = 224.0.0.0 ~ 239.255.255.255&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;E CLASS&lt;/p&gt;
+
+    &lt;p&gt;-2진법 = 11110000.00000000.00000000.00000000 ~&lt;/p&gt;
+
+    &lt;p&gt;​                  11111111.11111111.11111111.11111111&lt;/p&gt;
+
+    &lt;p&gt;-10진법 = 240.0.0.0 ~ 255.255.255.255&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;서브넷팅
+
+예 : 30개 pc를 사용하는 강의장에 ip 할당
+
+A클래스 -&amp;gt; 1677만 호스트
+C 클래스 -&amp;gt; 254개 호스트
+
+기존 클래스 방식은 비효율적
+
+서브넷팅을 통하여 ip를 절약!!!
+
+서브넷팅 : 네트워크를 반복적으로 1/2으로 분할해서 구함
+
+------------------------------------------------------------------------------
+Prefix 표기법
+
+255.255.255.0          /24
+11111111.11111111.11111111.00000000
+
+255.255.0.0               /16
+11111111.11111111.00000000.00000000
+
+255.0.0.0            /8
+11111111.00000000.00000000.00000000
+
+
+255.255.255.0          /24
+11111111.11111111.11111111.11100000
+퀴즈
+
+
+255.255.252.0           /22
+255.255.254.0          /23
+255.255.255.0          /24
+255.255.255.128   -&amp;gt;   /25
+255.255.255.192   -&amp;gt;   /26
+255.255.255.224   -&amp;gt;   /27
+                .240          /28
+                248         /29
+                252      /30
+                254       /31
+                255       /32
+
+-----------------------------------------------
+
+CIDR 
+IP 주소 재할당방법
+
+CIDR = 서브넷팅 + 슈퍼넷팅 + Prefix
+
+------------------------------------------------
+
+실습 - 서브넷팅
+
+211.100.10.0 ~ 211.100.10.255의 C클래스 네트워크를 네트워크당 60개의 ip를 사용가능하도록 서브넷팅 하시오.
+
+1) 서브넷마스크는? 255.255.255.192
+
+서브넷 4개서술
+211.100.10.0/26 (211.100.10.0 ~ 211.100.10.63)
+211.100.10.64/26(211.100.10.64 ~ 211.100.10.127)
+211.100.10.128/26(211.100.10.128 ~ 211.100.10.191)
+211.100.10.192/26(211.100.10.192~ 211.100.10.255)
+
+2) 서브넷의 개수는 4개의 서브넷
+3) 네트워크당 ip 의 개수 : 64 -2  실제사용가능한건 62개
+4) 첫번째 서브넷의 브로드캐스트 주소는? 211.100.10.63
+5) 두번째 서브넷의 사용가능한 ip 범위는?
+211.100.10.65 ~ 211.100.10.126
+
+255.255.224.0/19
+11111111.11111111.11100000.0
+
+8192
+256*32
+.0.0 ~ .32.0 8192
+.33.0 ~ .64.0 8192
+.65.0 ~ .96.0 8192
+.97.0 ~ .128.0 8192
+129.0 ~ .160.0 
+161.0 ~ .192.0
+193.0 ~ .224.0
+225.0 ~ .255.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>qkrqjatn218</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="network" />
+      
+
+      
+        <summary type="html">#무선 통신</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Managing Ghost users</title>
+      <link href="/managing-users" rel="alternate" type="text/html" title="Managing Ghost users" />
+      <published>2020-12-12T00:00:00+09:00</published>
+      <updated>2020-12-12T00:00:00+09:00</updated>
+      <id>/managing-users</id>
+      <content type="html" xml:base="/managing-users">&lt;p&gt;Ghost has a number of different user roles for your team&lt;/p&gt;
+&lt;h3 id=&quot;authors&quot;&gt;Authors&lt;/h3&gt;
+&lt;p&gt;The base user level in Ghost is an author. Authors can write posts, edit their own posts, and publish their own posts. Authors are &lt;strong&gt;trusted&lt;/strong&gt; users. If you don't trust users to be allowed to publish their own posts, you shouldn't invite them to Ghost admin.&lt;/p&gt;
+&lt;h3 id=&quot;editors&quot;&gt;Editors&lt;/h3&gt;
+&lt;p&gt;Editors are the 2nd user level in Ghost. Editors can do everything that an Author can do, but they can also edit and publish the posts of others - as well as their own. Editors can also invite new authors to the site.&lt;/p&gt;
+&lt;h3 id=&quot;administrators&quot;&gt;Administrators&lt;/h3&gt;
+&lt;p&gt;The top user level in Ghost is Administrator. Again, administrators can do everything that Authors and Editors can do, but they can also edit all site settings and data, not just content. Additionally, administrators have full access to invite, manage or remove any other user of the site.&lt;/p&gt;
+&lt;h3 id=&quot;theowner&quot;&gt;The Owner&lt;/h3&gt;
+&lt;p&gt;There is only ever one owner of a Ghost site. The owner is a special user which has all the same permissions as an Administrator, but with two exceptions: The Owner can never be deleted. And in some circumstances the owner will have access to additional special settings if applicable — for example, billing details, if using Ghost(Pro).&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;It's a good idea to ask all of your users to fill out their user profiles, including bio and social links. These will populate rich structured data for posts and generally create more opportunities for themes to fully populate their design.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>qkrqjatn218</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Getting started" />
+      
+
+      
+        <summary type="html">Ghost has a number of different user roles for your team Authors The base user level in Ghost is an author. Authors can write posts, edit their own posts, and publish their own posts. Authors are trusted users. If you don't trust users to be allowed to publish their own posts, you shouldn't invite them to Ghost admin. Editors Editors are the 2nd user level in Ghost. Editors can do everything that an Author can do, but they can also edit and publish the posts of others - as well as their own. Editors can also invite new authors to the site. Administrators The top user level in Ghost is Administrator. Again, administrators can do everything that Authors and Editors can do, but they can also edit all site settings and data, not just content. Additionally, administrators have full access to invite, manage or remove any other user of the site. The Owner There is only ever one owner of a Ghost site. The owner is a special user which has all the same permissions as an Administrator, but with two exceptions: The Owner can never be deleted. And in some circumstances the owner will have access to additional special settings if applicable — for example, billing details, if using Ghost(Pro). It's a good idea to ask all of your users to fill out their user profiles, including bio and social links. These will populate rich structured data for posts and generally create more opportunities for themes to fully populate their design.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Organising your content with tags</title>
+      <link href="/using-tags" rel="alternate" type="text/html" title="Organising your content with tags" />
+      <published>2020-12-12T00:00:00+09:00</published>
+      <updated>2020-12-12T00:00:00+09:00</updated>
+      <id>/using-tags</id>
+      <content type="html" xml:base="/using-tags">&lt;p&gt;Ghost has a single, powerful organisational taxonomy, called tags.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>qkrqjatn218</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Getting started" />
+      
+
+      
+        <summary type="html">Ghost has a single, powerful organisational taxonomy, called tags.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Welcome to Oaktree_lab</title>
+      <link href="/welcome" rel="alternate" type="text/html" title="Welcome to Oaktree_lab" />
+      <published>2020-12-12T00:00:00+09:00</published>
+      <updated>2020-12-12T00:00:00+09:00</updated>
+      <id>/welcome</id>
+      <content type="html" xml:base="/welcome">&lt;p&gt;Hey! Welcome to Oaktree_lab, it’s great to have you :)&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>qkrqjatn218</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Getting started" />
+      
+
+      
+        <summary type="html">Hey! Welcome to Oaktree_lab, it’s great to have you :)</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Advanced Markdown tips</title>
+      <link href="/advanced-markdown" rel="alternate" type="text/html" title="Advanced Markdown tips" />
+      <published>2020-12-12T00:00:00+09:00</published>
+      <updated>2020-12-12T00:00:00+09:00</updated>
+      <id>/advanced-markdown</id>
+      <content type="html" xml:base="/advanced-markdown">&lt;p&gt;There are lots of powerful things you can do with the Ghost editor&lt;/p&gt;
+&lt;p&gt;If you've gotten pretty comfortable with &lt;a href=&quot;/the-editor/&quot;&gt;all the basics&lt;/a&gt; of writing in Ghost, then you may enjoy some more advanced tips about the types of things you can do with Markdown!&lt;/p&gt;
+&lt;p&gt;As with the last post about the editor, you'll want to be actually editing this post as you read it so that you can see all the Markdown code we're using.&lt;/p&gt;
+&lt;h2 id=&quot;specialformatting&quot;&gt;Special formatting&lt;/h2&gt;
+&lt;p&gt;As well as bold and italics, you can also use some other special formatting in Markdown when the need arises, for example:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;s&gt;strike through&lt;/s&gt;&lt;/li&gt;
+&lt;li&gt;&lt;mark&gt;highlight&lt;/mark&gt;&lt;/li&gt;
+&lt;li&gt;*escaped characters*&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;writingcodeblocks&quot;&gt;Writing code blocks&lt;/h2&gt;
+&lt;p&gt;There are two types of code elements which can be inserted in Markdown, the first is inline, and the other is block. Inline code is formatted by wrapping any word or words in back-ticks, &lt;code&gt;like this&lt;/code&gt;. Larger snippets of code can be displayed across multiple lines using triple back ticks:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.my-link {
+    text-decoration: underline;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you want to get really fancy, you can even add syntax highlighting using &lt;a href=&quot;http://prismjs.com/&quot;&gt;Prism.js&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;fullbleedimages&quot;&gt;Full bleed images&lt;/h2&gt;
+&lt;p&gt;One neat trick which you can use in Markdown to distinguish between different types of images is to add a &lt;code&gt;#hash&lt;/code&gt; value to the end of the source URL, and then target images containing the hash with special styling. For example:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://casper.ghost.org/v1.0.0/images/walking.jpg#full&quot; alt=&quot;walking&quot;&gt;&lt;/p&gt;
+&lt;p&gt;which is styled with...&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;img[src$=&amp;quot;#full&amp;quot;] {
+    max-width: 100vw;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This creates full-bleed images in the Casper theme, which stretch beyond their usual boundaries right up to the edge of the window. Every theme handles these types of things slightly differently, but it's a great trick to play with if you want to have a variety of image sizes and styles.&lt;/p&gt;
+&lt;h2 id=&quot;referencelists&quot;&gt;Reference lists&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;The quick brown &lt;a href=&quot;https://en.wikipedia.org/wiki/Fox&quot; title=&quot;Wikipedia: Fox&quot;&gt;fox&lt;/a&gt;, jumped over the lazy &lt;a href=&quot;https://en.wikipedia.org/wiki/Dog&quot; title=&quot;Wikipedia: Dog&quot;&gt;dog&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Another way to insert links in markdown is using reference lists. You might want to use this style of linking to cite reference material in a Wikipedia-style. All of the links are listed at the end of the document, so you can maintain full separation between content and its source or reference.&lt;/p&gt;
+&lt;h2 id=&quot;creatingfootnotes&quot;&gt;Creating footnotes&lt;/h2&gt;
+&lt;p&gt;The quick brown fox&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn1&quot; id=&quot;fnref1&quot;&gt;[1]&lt;/a&gt;&lt;/sup&gt; jumped over the lazy dog&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn2&quot; id=&quot;fnref2&quot;&gt;[2]&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;Footnotes are a great way to add additional contextual details when appropriate. Ghost will automatically add footnote content to the very end of your post.&lt;/p&gt;
+&lt;h2 id=&quot;fullhtml&quot;&gt;Full HTML&lt;/h2&gt;
+&lt;p&gt;Perhaps the best part of Markdown is that you're never limited to just Markdown. You can write HTML directly in the Ghost editor and it will just work as HTML usually does. No limits! Here's a standard YouTube embed code as an example:&lt;/p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Cniqsc9QfDo?rel=0&amp;amp;showinfo=0&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;hr class=&quot;footnotes-sep&quot;&gt;
+&lt;section class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn1&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Foxes are red &lt;a href=&quot;#fnref1&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn2&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Dogs are usually not red &lt;a href=&quot;#fnref2&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>qkrqjatn218</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Getting started" />
+      
+
+      
+        <summary type="html">There are lots of powerful things you can do with the Ghost editor If you've gotten pretty comfortable with all the basics of writing in Ghost, then you may enjoy some more advanced tips about the types of things you can do with Markdown! As with the last post about the editor, you'll want to be actually editing this post as you read it so that you can see all the Markdown code we're using. Special formatting As well as bold and italics, you can also use some other special formatting in Markdown when the need arises, for example: strike through highlight *escaped characters* Writing code blocks There are two types of code elements which can be inserted in Markdown, the first is inline, and the other is block. Inline code is formatted by wrapping any word or words in back-ticks, like this. Larger snippets of code can be displayed across multiple lines using triple back ticks: .my-link { text-decoration: underline; } If you want to get really fancy, you can even add syntax highlighting using Prism.js. Full bleed images One neat trick which you can use in Markdown to distinguish between different types of images is to add a #hash value to the end of the source URL, and then target images containing the hash with special styling. For example: which is styled with... img[src$=&amp;quot;#full&amp;quot;] { max-width: 100vw; } This creates full-bleed images in the Casper theme, which stretch beyond their usual boundaries right up to the edge of the window. Every theme handles these types of things slightly differently, but it's a great trick to play with if you want to have a variety of image sizes and styles. Reference lists The quick brown fox, jumped over the lazy dog. Another way to insert links in markdown is using reference lists. You might want to use this style of linking to cite reference material in a Wikipedia-style. All of the links are listed at the end of the document, so you can maintain full separation between content and its source or reference. Creating footnotes The quick brown fox[1] jumped over the lazy dog[2]. Footnotes are a great way to add additional contextual details when appropriate. Ghost will automatically add footnote content to the very end of your post. Full HTML Perhaps the best part of Markdown is that you're never limited to just Markdown. You can write HTML directly in the Ghost editor and it will just work as HTML usually does. No limits! Here's a standard YouTube embed code as an example: Foxes are red ↩︎ Dogs are usually not red ↩︎</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Setting up your own Ghost theme</title>
+      <link href="/themes" rel="alternate" type="text/html" title="Setting up your own Ghost theme" />
+      <published>2020-12-12T00:00:00+09:00</published>
+      <updated>2020-12-12T00:00:00+09:00</updated>
+      <id>/themes</id>
+      <content type="html" xml:base="/themes">&lt;p&gt;Creating a totally custom design for your publication&lt;/p&gt;
+&lt;p&gt;Ghost comes with a beautiful default theme called Casper, which is designed to be a clean, readable publication layout and can be easily adapted for most purposes. However, Ghost can also be completely themed to suit your needs. Rather than just giving you a few basic settings which act as a poor proxy for code, we just let you write code.&lt;/p&gt;
+&lt;p&gt;There are a huge range of both free and premium pre-built themes which you can get from the &lt;a href=&quot;http://marketplace.ghost.org&quot;&gt;Ghost Theme Marketplace&lt;/a&gt;, or you can simply create your own from scratch.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://marketplace.ghost.org&quot;&gt;&lt;img src=&quot;https://casper.ghost.org/v1.0.0/images/marketplace.jpg&quot; alt=&quot;marketplace&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Anyone can write a completely custom Ghost theme, with just some solid knowledge of HTML and CSS&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Ghost themes are written with a templating language called handlebars, which has a bunch of dynamic helpers to insert your data into template files. Like &lt;code&gt;&lt;/code&gt;, for example, outputs the name of the current author.&lt;/p&gt;
+&lt;p&gt;The best way to learn how to write your own Ghost theme is to have a look at &lt;a href=&quot;https://github.com/TryGhost/Casper&quot;&gt;the source code for Casper&lt;/a&gt;, which is heavily commented and should give you a sense of how everything fits together.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;default.hbs&lt;/code&gt; is the main template file, all contexts will load inside this file unless specifically told to use a different template.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;post.hbs&lt;/code&gt; is the file used in the context of viewing a post.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;index.hbs&lt;/code&gt; is the file used in the context of viewing the home page.&lt;/li&gt;
+&lt;li&gt;and so on&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We've got &lt;a href=&quot;http://themes.ghost.org/docs/about&quot;&gt;full and extensive theme documentation&lt;/a&gt; which outlines every template file, context and helper that you can use.&lt;/p&gt;
+&lt;p&gt;If you want to chat with other people making Ghost themes to get any advice or help, there's also a &lt;strong&gt;#themes&lt;/strong&gt; channel in our &lt;a href=&quot;https://slack.ghost.org&quot;&gt;public Slack community&lt;/a&gt; which we always recommend joining!&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>qkrqjatn218</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Getting started" />
+      
+
+      
+        <summary type="html">Creating a totally custom design for your publication Ghost comes with a beautiful default theme called Casper, which is designed to be a clean, readable publication layout and can be easily adapted for most purposes. However, Ghost can also be completely themed to suit your needs. Rather than just giving you a few basic settings which act as a poor proxy for code, we just let you write code. There are a huge range of both free and premium pre-built themes which you can get from the Ghost Theme Marketplace, or you can simply create your own from scratch. Anyone can write a completely custom Ghost theme, with just some solid knowledge of HTML and CSS Ghost themes are written with a templating language called handlebars, which has a bunch of dynamic helpers to insert your data into template files. Like , for example, outputs the name of the current author. The best way to learn how to write your own Ghost theme is to have a look at the source code for Casper, which is heavily commented and should give you a sense of how everything fits together. default.hbs is the main template file, all contexts will load inside this file unless specifically told to use a different template. post.hbs is the file used in the context of viewing a post. index.hbs is the file used in the context of viewing the home page. and so on We've got full and extensive theme documentation which outlines every template file, context and helper that you can use. If you want to chat with other people making Ghost themes to get any advice or help, there's also a #themes channel in our public Slack community which we always recommend joining!</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Using the Ghost editor</title>
+      <link href="/the-editor" rel="alternate" type="text/html" title="Using the Ghost editor" />
+      <published>2020-12-12T00:00:00+09:00</published>
+      <updated>2020-12-12T00:00:00+09:00</updated>
+      <id>/the-editor</id>
+      <content type="html" xml:base="/the-editor">&lt;p&gt;Ghost uses a language called &lt;strong&gt;Markdown&lt;/strong&gt; to format text.&lt;/p&gt;
+&lt;p&gt;When you go to edit a post and see special characters and colours intertwined between the words, those are Markdown shortcuts which tell Ghost what to do with the words in your document. The biggest benefit of Markdown is that you can quickly apply formatting as you type, without needing to pause.&lt;/p&gt;
+&lt;p&gt;At the bottom of the editor, you'll find a toolbar with basic formatting options to help you get started as easily as possible. You'll also notice that there's a &lt;strong&gt;?&lt;/strong&gt; icon, which contains more advanced shortcuts.&lt;/p&gt;
+&lt;p&gt;For now, though, let's run you through some of the basics. You'll want to make sure you're editing this post in order to see all the Markdown we've used.&lt;/p&gt;
+&lt;h2 id=&quot;formattingtext&quot;&gt;Formatting text&lt;/h2&gt;
+&lt;p&gt;The most common shortcuts are of course, &lt;strong&gt;bold&lt;/strong&gt; text, &lt;em&gt;italic&lt;/em&gt; text, and &lt;a href=&quot;https://example.com&quot;&gt;hyperlinks&lt;/a&gt;. These generally make up the bulk of any document. You can type the characters out, but you can also use keyboard shortcuts.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;CMD/Ctrl + B&lt;/code&gt; for Bold&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;CMD/Ctrl + I&lt;/code&gt; for Italic&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;CMD/Ctrl + K&lt;/code&gt; for a Link&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;CMD/Ctrl + H&lt;/code&gt; for a Heading (Press multiple times for h2/h3/h4/etc)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With just a couple of extra characters here and there, you're well on your way to creating a beautifully formatted story.&lt;/p&gt;
+&lt;h2 id=&quot;insertingimages&quot;&gt;Inserting images&lt;/h2&gt;
+&lt;p&gt;Images in Markdown look just the same as links, except they're prefixed with an exclamation mark, like this:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;![Image description](/path/to/image.jpg)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://casper.ghost.org/v1.0.0/images/computer.jpg&quot; alt=&quot;Computer&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Most Markdown editors don't make you type this out, though. In Ghost you can click on the image icon in the toolbar at the bottom of the editor, or you can just click and drag an image from your desktop directly into the editor. Both will upload the image for you and generate the appropriate Markdown.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Important Note:&lt;/strong&gt; Ghost does not currently have automatic image resizing, so it's always a good idea to make sure your images aren't gigantic files &lt;strong&gt;before&lt;/strong&gt; uploading them to Ghost.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&quot;makinglists&quot;&gt;Making lists&lt;/h2&gt;
+&lt;p&gt;Lists in HTML are a formatting nightmare, but in Markdown they become an absolute breeze with just a couple of characters and a bit of smart automation. For numbered lists, just write out the numbers. For bullet lists, just use &lt;code&gt;*&lt;/code&gt; or &lt;code&gt;-&lt;/code&gt; or &lt;code&gt;+&lt;/code&gt;. Like this:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Crack the eggs over a bowl&lt;/li&gt;
+&lt;li&gt;Whisk them together&lt;/li&gt;
+&lt;li&gt;Make an omellete&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Remember to buy milk&lt;/li&gt;
+&lt;li&gt;Feed the cat&lt;/li&gt;
+&lt;li&gt;Come up with idea for next story&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;addingquotes&quot;&gt;Adding quotes&lt;/h2&gt;
+&lt;p&gt;When you want to pull out a particularly good except in the middle of a piece, you can use &lt;code&gt;&amp;gt;&lt;/code&gt; at the beginning of a paragraph to turn it into a Blockquote. You might've seen this formatting before in email clients.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A well placed quote guides a reader through a story, helping them to understand the most important points being made&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;All themes handles blockquotes slightly differently. Sometimes they'll look better kept shorter, while other times you can quote fairly hefty amounts of text and get away with it. Generally, the safest option is to use blockquotes sparingly.&lt;/p&gt;
+&lt;h2 id=&quot;dividingthingsup&quot;&gt;Dividing things up&lt;/h2&gt;
+&lt;p&gt;If you're writing a piece in parts and you just feel like you need to divide a couple of sections distinctly from each other, a horizontal rule might be just what you need. Dropping &lt;code&gt;---&lt;/code&gt; on a new line will create a sleak divider, anywhere you want it.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;This should get you going with the vast majority of what you need to do in the editor, but if you're still curious about more advanced tips then check out the &lt;a href=&quot;/advanced-markdown/&quot;&gt;Advanced Markdown Guide&lt;/a&gt; - or if you'd rather learn about how Ghost taxononomies work, we've got a overview of &lt;a href=&quot;/using-tags/&quot;&gt;how to use Ghost tags&lt;/a&gt;.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>qkrqjatn218</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Getting started" />
+      
+
+      
+        <summary type="html">Ghost uses a language called Markdown to format text. When you go to edit a post and see special characters and colours intertwined between the words, those are Markdown shortcuts which tell Ghost what to do with the words in your document. The biggest benefit of Markdown is that you can quickly apply formatting as you type, without needing to pause. At the bottom of the editor, you'll find a toolbar with basic formatting options to help you get started as easily as possible. You'll also notice that there's a ? icon, which contains more advanced shortcuts. For now, though, let's run you through some of the basics. You'll want to make sure you're editing this post in order to see all the Markdown we've used. Formatting text The most common shortcuts are of course, bold text, italic text, and hyperlinks. These generally make up the bulk of any document. You can type the characters out, but you can also use keyboard shortcuts. CMD/Ctrl + B for Bold CMD/Ctrl + I for Italic CMD/Ctrl + K for a Link CMD/Ctrl + H for a Heading (Press multiple times for h2/h3/h4/etc) With just a couple of extra characters here and there, you're well on your way to creating a beautifully formatted story. Inserting images Images in Markdown look just the same as links, except they're prefixed with an exclamation mark, like this: ![Image description](/path/to/image.jpg) Most Markdown editors don't make you type this out, though. In Ghost you can click on the image icon in the toolbar at the bottom of the editor, or you can just click and drag an image from your desktop directly into the editor. Both will upload the image for you and generate the appropriate Markdown. Important Note: Ghost does not currently have automatic image resizing, so it's always a good idea to make sure your images aren't gigantic files before uploading them to Ghost. Making lists Lists in HTML are a formatting nightmare, but in Markdown they become an absolute breeze with just a couple of characters and a bit of smart automation. For numbered lists, just write out the numbers. For bullet lists, just use * or - or +. Like this: Crack the eggs over a bowl Whisk them together Make an omellete or Remember to buy milk Feed the cat Come up with idea for next story Adding quotes When you want to pull out a particularly good except in the middle of a piece, you can use &amp;gt; at the beginning of a paragraph to turn it into a Blockquote. You might've seen this formatting before in email clients. A well placed quote guides a reader through a story, helping them to understand the most important points being made All themes handles blockquotes slightly differently. Sometimes they'll look better kept shorter, while other times you can quote fairly hefty amounts of text and get away with it. Generally, the safest option is to use blockquotes sparingly. Dividing things up If you're writing a piece in parts and you just feel like you need to divide a couple of sections distinctly from each other, a horizontal rule might be just what you need. Dropping --- on a new line will create a sleak divider, anywhere you want it. This should get you going with the vast majority of what you need to do in the editor, but if you're still curious about more advanced tips then check out the Advanced Markdown Guide - or if you'd rather learn about how Ghost taxononomies work, we've got a overview of how to use Ghost tags.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">A Full and Comprehensive Style Test</title>
@@ -478,662 +1863,6 @@ c.draw = function() {
 
       
         <summary type="html">Below is just about everything you’ll need to style in the theme. Check the source code to see the many embedded elements within paragraphs.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Down The Rabbit Hole</title>
-      <link href="/down-the-rabbit-hole" rel="alternate" type="text/html" title="Down The Rabbit Hole" />
-      <published>2020-12-12T00:00:00+09:00</published>
-      <updated>2020-12-12T00:00:00+09:00</updated>
-      <id>/down-the-rabbit-hole</id>
-      <content type="html" xml:base="/down-the-rabbit-hole">&lt;p&gt;Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, ‘and what is the use of a book,’ thought Alice ‘without pictures or conversation?’&lt;/p&gt;
-
-&lt;p&gt;So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.&lt;/p&gt;
-
-&lt;p&gt;There was nothing so very remarkable in that; nor did Alice think it so very much out of the way to hear the Rabbit say to itself, ‘Oh dear! Oh dear! I shall be late!’ (when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually took a watch out of its waistcoat-pocket, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge.&lt;/p&gt;
-
-&lt;p&gt;In another moment down went Alice after it, never once considering how in the world she was to get out again.&lt;/p&gt;
-
-&lt;p&gt;The rabbit-hole went straight on like a tunnel for some way, and then dipped suddenly down, so suddenly that Alice had not a moment to think about stopping herself before she found herself falling down a very deep well.&lt;/p&gt;
-
-&lt;p&gt;Either the well was very deep, or she fell very slowly, for she had plenty of time as she went down to look about her and to wonder what was going to happen next. First, she tried to look down and make out what she was coming to, but it was too dark to see anything; then she looked at the sides of the well, and noticed that they were filled with cupboards and book-shelves; here and there she saw maps and pictures hung upon pegs. She took down a jar from one of the shelves as she passed; it was labelled ‘ORANGE MARMALADE’, but to her great disappointment it was empty: she did not like to drop the jar for fear of killing somebody, so managed to put it into one of the cupboards as she fell past it.&lt;/p&gt;
-
-&lt;p&gt;‘Well!’ thought Alice to herself, ‘after such a fall as this, I shall think nothing of tumbling down stairs! How brave they’ll all think me at home! Why, I wouldn’t say anything about it, even if I fell off the top of the house!’ (Which was very likely true.)&lt;/p&gt;
-
-&lt;p&gt;Down, down, down. Would the fall never come to an end! ‘I wonder how many miles I’ve fallen by this time?’ she said aloud. ‘I must be getting somewhere near the centre of the earth. Let me see: that would be four thousand miles down, I think—’ (for, you see, Alice had learnt several things of this sort in her lessons in the schoolroom, and though this was not a very good opportunity for showing off her knowledge, as there was no one to listen to her, still it was good practice to say it over) ‘—yes, that’s about the right distance—but then I wonder what Latitude or Longitude I’ve got to?’ (Alice had no idea what Latitude was, or Longitude either, but thought they were nice grand words to say.)&lt;/p&gt;
-
-&lt;p&gt;Presently she began again. ‘I wonder if I shall fall right through the earth! How funny it’ll seem to come out among the people that walk with their heads downward! The Antipathies, I think—’ (she was rather glad there was no one listening, this time, as it didn’t sound at all the right word) ‘—but I shall have to ask them what the name of the country is, you know. Please, Ma’am, is this New Zealand or Australia?’ (and she tried to curtsey as she spoke—fancy curtseying as you’re falling through the air! Do you think you could manage it?) ‘And what an ignorant little girl she’ll think me for asking! No, it’ll never do to ask: perhaps I shall see it written up somewhere.’&lt;/p&gt;
-
-&lt;p&gt;Down, down, down. There was nothing else to do, so Alice soon began talking again. ‘Dinah’ll miss me very much to-night, I should think!’ (Dinah was the cat.) ‘I hope they’ll remember her saucer of milk at tea-time. Dinah my dear! I wish you were down here with me! There are no mice in the air, I’m afraid, but you might catch a bat, and that’s very like a mouse, you know. But do cats eat bats, I wonder?’ And here Alice began to get rather sleepy, and went on saying to herself, in a dreamy sort of way, ‘Do cats eat bats? Do cats eat bats?’ and sometimes, ‘Do bats eat cats?’ for, you see, as she couldn’t answer either question, it didn’t much matter which way she put it. She felt that she was dozing off, and had just begun to dream that she was walking hand in hand with Dinah, and saying to her very earnestly, ‘Now, Dinah, tell me the truth: did you ever eat a bat?’ when suddenly, thump! thump! down she came upon a heap of sticks and dry leaves, and the fall was over.&lt;/p&gt;
-
-&lt;p&gt;Alice was not a bit hurt, and she jumped up on to her feet in a moment: she looked up, but it was all dark overhead; before her was another long passage, and the White Rabbit was still in sight, hurrying down it. There was not a moment to be lost: away went Alice like the wind, and was just in time to hear it say, as it turned a corner, ‘Oh my ears and whiskers, how late it’s getting!’ She was close behind it when she turned the corner, but the Rabbit was no longer to be seen: she found herself in a long, low hall, which was lit up by a row of lamps hanging from the roof.&lt;/p&gt;
-
-&lt;p&gt;There were doors all round the hall, but they were all locked; and when Alice had been all the way down one side and up the other, trying every door, she walked sadly down the middle, wondering how she was ever to get out again.&lt;/p&gt;
-
-&lt;p&gt;Suddenly she came upon a little three-legged table, all made of solid glass; there was nothing on it except a tiny golden key, and Alice’s first thought was that it might belong to one of the doors of the hall; but, alas! either the locks were too large, or the key was too small, but at any rate it would not open any of them.&lt;/p&gt;
-
-&lt;p&gt;However, on the second time round, she came upon a low curtain she had not noticed before, and behind it was a little door about fifteen inches high: she tried the little golden key in the lock, and to her great delight it fitted!&lt;/p&gt;
-
-&lt;p&gt;Alice opened the door and found that it led into a small passage, not much larger than a rat-hole: she knelt down and looked along the passage into the loveliest garden you ever saw. How she longed to get out of that dark hall, and wander about among those beds of bright flowers and those cool fountains, but she could not even get her head though the doorway; ‘and even if my head would go through,’ thought poor Alice, ‘it would be of very little use without my shoulders. Oh, how I wish I could shut up like a telescope! I think I could, if I only know how to begin.’ For, you see, so many out-of-the-way things had happened lately, that Alice had begun to think that very few things indeed were really impossible.&lt;/p&gt;
-
-&lt;p&gt;There seemed to be no use in waiting by the little door, so she went back to the table, half hoping she might find another key on it, or at any rate a book of rules for shutting people up like telescopes: this time she found a little bottle on it, (‘which certainly was not here before,’ said Alice,) and round the neck of the bottle was a paper label, with the words ‘DRINK ME’ beautifully printed on it in large letters.&lt;/p&gt;
-
-&lt;p&gt;It was all very well to say ‘Drink me,’ but the wise little Alice was not going to do that in a hurry. ‘No, I’ll look first,’ she said, ‘and see whether it’s marked “poison” or not’; for she had read several nice little histories about children who had got burnt, and eaten up by wild beasts and other unpleasant things, all because they would not remember the simple rules their friends had taught them: such as, that a red-hot poker will burn you if you hold it too long; and that if you cut your finger very deeply with a knife, it usually bleeds; and she had never forgotten that, if you drink much from a bottle marked ‘poison,’ it is almost certain to disagree with you, sooner or later.&lt;/p&gt;
-
-&lt;p&gt;However, this bottle was not marked ‘poison,’ so Alice ventured to taste it, and finding it very nice, (it had, in fact, a sort of mixed flavour of cherry-tart, custard, pine-apple, roast turkey, toffee, and hot buttered toast,) she very soon finished it off.&lt;/p&gt;
-
-&lt;p&gt;‘What a curious feeling!’ said Alice; ‘I must be shutting up like a telescope.’&lt;/p&gt;
-
-&lt;p&gt;And so it was indeed: she was now only ten inches high, and her face brightened up at the thought that she was now the right size for going through the little door into that lovely garden. First, however, she waited for a few minutes to see if she was going to shrink any further: she felt a little nervous about this; ‘for it might end, you know,’ said Alice to herself, ‘in my going out altogether, like a candle. I wonder what I should be like then?’ And she tried to fancy what the flame of a candle is like after the candle is blown out, for she could not remember ever having seen such a thing.&lt;/p&gt;
-
-&lt;p&gt;After a while, finding that nothing more happened, she decided on going into the garden at once; but, alas for poor Alice! when she got to the door, she found she had forgotten the little golden key, and when she went back to the table for it, she found she could not possibly reach it: she could see it quite plainly through the glass, and she tried her best to climb up one of the legs of the table, but it was too slippery; and when she had tired herself out with trying, the poor little thing sat down and cried.&lt;/p&gt;
-
-&lt;p&gt;‘Come, there’s no use in crying like that!’ said Alice to herself, rather sharply; ‘I advise you to leave off this minute!’ She generally gave herself very good advice, (though she very seldom followed it), and sometimes she scolded herself so severely as to bring tears into her eyes; and once she remembered trying to box her own ears for having cheated herself in a game of croquet she was playing against herself, for this curious child was very fond of pretending to be two people. ‘But it’s no use now,’ thought poor Alice, ‘to pretend to be two people! Why, there’s hardly enough of me left to make one respectable person!’&lt;/p&gt;
-
-&lt;p&gt;Soon her eye fell on a little glass box that was lying under the table: she opened it, and found in it a very small cake, on which the words ‘EAT ME’ were beautifully marked in currants. ‘Well, I’ll eat it,’ said Alice, ‘and if it makes me grow larger, I can reach the key; and if it makes me grow smaller, I can creep under the door; so either way I’ll get into the garden, and I don’t care which happens!’&lt;/p&gt;
-
-&lt;p&gt;She ate a little bit, and said anxiously to herself, ‘Which way? Which way?’, holding her hand on the top of her head to feel which way it was growing, and she was quite surprised to find that she remained the same size: to be sure, this generally happens when one eats cake, but Alice had got so much into the way of expecting nothing but out-of-the-way things to happen, that it seemed quite dull and stupid for life to go on in the common way.&lt;/p&gt;
-
-&lt;p&gt;So she set to work, and very soon finished off the cake.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>qkrqjatn218</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="issue" />
-      
-
-      
-        <summary type="html">Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, ‘and what is the use of a book,’ thought Alice ‘without pictures or conversation?’</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">I Have a Dream</title>
-      <link href="/i-have-a-dream" rel="alternate" type="text/html" title="I Have a Dream" />
-      <published>2020-12-12T00:00:00+09:00</published>
-      <updated>2020-12-12T00:00:00+09:00</updated>
-      <id>/i-have-a-dream</id>
-      <content type="html" xml:base="/i-have-a-dream">&lt;p&gt;I am happy to join with you today in what will go down in history as the greatest demonstration for freedom in the history of our nation.&lt;/p&gt;
-
-&lt;p&gt;Five score years ago, a great American, in whose symbolic shadow we stand today, signed the Emancipation Proclamation. This momentous decree came as a great beacon light of hope to millions of Negro slaves who had been seared in the flames of withering injustice. It came as a joyous daybreak to end the long night of their captivity.&lt;/p&gt;
-
-&lt;p&gt;But one hundred years later, the Negro still is not free. One hundred years later, the life of the Negro is still sadly crippled by the manacles of segregation and the chains of discrimination. One hundred years later, the Negro lives on a lonely island of poverty in the midst of a vast ocean of material prosperity. One hundred years later, the Negro is still languished in the corners of American society and finds himself an exile in his own land. And so we’ve come here today to dramatize a shameful condition.&lt;/p&gt;
-
-&lt;p&gt;In a sense we’ve come to our nation’s capital to cash a check. When the architects of our republic wrote the magnificent words of the Constitution and the Declaration of Independence, they were signing a promissory note to which every American was to fall heir. This note was a promise that all men, yes, black men as well as white men, would be guaranteed the “unalienable Rights” of “Life, Liberty and the pursuit of Happiness.” It is obvious today that America has defaulted on this promissory note, insofar as her citizens of color are concerned. Instead of honoring this sacred obligation, America has given the Negro people a bad check, a check which has come back marked “insufficient funds.”&lt;/p&gt;
-
-&lt;p&gt;But we refuse to believe that the bank of justice is bankrupt. We refuse to believe that there are insufficient funds in the great vaults of opportunity of this nation. And so, we’ve come to cash this check, a check that will give us upon demand the riches of freedom and the security of justice.&lt;/p&gt;
-
-&lt;p&gt;We have also come to this hallowed spot to remind America of the fierce urgency of Now. This is no time to engage in the luxury of cooling off or to take the tranquilizing drug of gradualism. Now is the time to make real the promises of democracy. Now is the time to rise from the dark and desolate valley of segregation to the sunlit path of racial justice. Now is the time to lift our nation from the quicksands of racial injustice to the solid rock of brotherhood. Now is the time to make justice a reality for all of God’s children.&lt;/p&gt;
-
-&lt;p&gt;It would be fatal for the nation to overlook the urgency of the moment. This sweltering summer of the Negro’s legitimate discontent will not pass until there is an invigorating autumn of freedom and equality. Nineteen sixty-three is not an end, but a beginning. And those who hope that the Negro needed to blow off steam and will now be content will have a rude awakening if the nation returns to business as usual. And there will be neither rest nor tranquility in America until the Negro is granted his citizenship rights. The whirlwinds of revolt will continue to shake the foundations of our nation until the bright day of justice emerges.&lt;/p&gt;
-
-&lt;p&gt;But there is something that I must say to my people, who stand on the warm threshold which leads into the palace of justice: In the process of gaining our rightful place, we must not be guilty of wrongful deeds. Let us not seek to satisfy our thirst for freedom by drinking from the cup of bitterness and hatred. We must forever conduct our struggle on the high plane of dignity and discipline. We must not allow our creative protest to degenerate into physical violence. Again and again, we must rise to the majestic heights of meeting physical force with soul force.&lt;/p&gt;
-
-&lt;p&gt;The marvelous new militancy which has engulfed the Negro community must not lead us to a distrust of all white people, for many of our white brothers, as evidenced by their presence here today, have come to realize that their destiny is tied up with our destiny. And they have come to realize that their freedom is inextricably bound to our freedom.&lt;/p&gt;
-
-&lt;p&gt;We cannot walk alone.&lt;/p&gt;
-
-&lt;p&gt;And as we walk, we must make the pledge that we shall always march ahead.&lt;/p&gt;
-
-&lt;p&gt;We cannot turn back.&lt;/p&gt;
-
-&lt;p&gt;There are those who are asking the devotees of civil rights, “When will you be satisfied?” We can never be satisfied as long as the Negro is the victim of the unspeakable horrors of police brutality. We can never be satisfied as long as our bodies, heavy with the fatigue of travel, cannot gain lodging in the motels of the highways and the hotels of the cities. We cannot be satisfied as long as the negro’s basic mobility is from a smaller ghetto to a larger one. We can never be satisfied as long as our children are stripped of their self-hood and robbed of their dignity by signs stating: “For Whites Only.” We cannot be satisfied as long as a Negro in Mississippi cannot vote and a Negro in New York believes he has nothing for which to vote. No, no, we are not satisfied, and we will not be satisfied until “justice rolls down like waters, and righteousness like a mighty stream.”&lt;/p&gt;
-
-&lt;p&gt;I am not unmindful that some of you have come here out of great trials and tribulations. Some of you have come fresh from narrow jail cells. And some of you have come from areas where your quest – quest for freedom left you battered by the storms of persecution and staggered by the winds of police brutality. You have been the veterans of creative suffering. Continue to work with the faith that unearned suffering is redemptive. Go back to Mississippi, go back to Alabama, go back to South Carolina, go back to Georgia, go back to Louisiana, go back to the slums and ghettos of our northern cities, knowing that somehow this situation can and will be changed.&lt;/p&gt;
-
-&lt;p&gt;Let us not wallow in the valley of despair, I say to you today, my friends.&lt;/p&gt;
-
-&lt;p&gt;And so even though we face the difficulties of today and tomorrow, I still have a dream. It is a dream deeply rooted in the American dream.&lt;/p&gt;
-
-&lt;p&gt;I have a dream that one day this nation will rise up and live out the true meaning of its creed: “We hold these truths to be self-evident, that all men are created equal.”&lt;/p&gt;
-
-&lt;p&gt;I have a dream that one day on the red hills of Georgia, the sons of former slaves and the sons of former slave owners will be able to sit down together at the table of brotherhood.&lt;/p&gt;
-
-&lt;p&gt;I have a dream that one day even the state of Mississippi, a state sweltering with the heat of injustice, sweltering with the heat of oppression, will be transformed into an oasis of freedom and justice.&lt;/p&gt;
-
-&lt;p&gt;I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin but by the content of their character.&lt;/p&gt;
-
-&lt;p&gt;I have a &lt;strong&gt;dream&lt;/strong&gt; today!&lt;/p&gt;
-
-&lt;p&gt;I have a dream that one day, down in Alabama, with its vicious racists, with its governor having his lips dripping with the words of “interposition” and “nullification” – one day right there in Alabama little black boys and black girls will be able to join hands with little white boys and white girls as sisters and brothers.&lt;/p&gt;
-
-&lt;p&gt;I have a &lt;strong&gt;dream&lt;/strong&gt; today!&lt;/p&gt;
-
-&lt;p&gt;I have a dream that one day every valley shall be exalted, and every hill and mountain shall be made low, the rough places will be made plain, and the crooked places will be made straight; “and the glory of the Lord shall be revealed and all flesh shall see it together.”&lt;/p&gt;
-
-&lt;p&gt;This is our hope, and this is the faith that I go back to the South with.&lt;/p&gt;
-
-&lt;p&gt;With this faith, we will be able to hew out of the mountain of despair a stone of hope. With this faith, we will be able to transform the jangling discords of our nation into a beautiful symphony of brotherhood. With this faith, we will be able to work together, to pray together, to struggle together, to go to jail together, to stand up for freedom together, knowing that we will be free one day.&lt;/p&gt;
-
-&lt;p&gt;And this will be the day – this will be the day when all of God’s children will be able to sing with new meaning:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;My country ‘tis of thee, sweet land of liberty, of thee I sing.&lt;/p&gt;
-
-  &lt;p&gt;Land where my fathers died, land of the Pilgrim’s pride,&lt;/p&gt;
-
-  &lt;p&gt;From every mountainside, let freedom ring!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;And if America is to be a great nation, this must become true.&lt;/p&gt;
-
-&lt;p&gt;And so let freedom ring from the prodigious hilltops of New Hampshire.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Let freedom ring from the mighty mountains of New York.&lt;/p&gt;
-
-  &lt;p&gt;Let freedom ring from the heightening Alleghenies of Pennsylvania.&lt;/p&gt;
-
-  &lt;p&gt;Let freedom ring from the snow-capped Rockies of Colorado.&lt;/p&gt;
-
-  &lt;p&gt;Let freedom ring from the curvaceous slopes of California.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;But not only that:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Let freedom ring from Stone Mountain of Georgia.&lt;/p&gt;
-
-  &lt;p&gt;Let freedom ring from Lookout Mountain of Tennessee.&lt;/p&gt;
-
-  &lt;p&gt;Let freedom ring from every hill and molehill of Mississippi.&lt;/p&gt;
-
-  &lt;p&gt;From every mountainside, let freedom ring.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;And when this happens, and when we allow freedom ring, when we let it ring from every village and every hamlet, from every state and every city, we will be able to speed up that day when all of God’s children, black men and white men, Jews and Gentiles, Protestants and Catholics, will be able to join hands and sing in the words of the old Negro spiritual:&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Free at last! Free at last!&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Thank God Almighty, we are free at last!&lt;/em&gt;&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>qkrqjatn218</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="network" />
-      
-
-      
-        <summary type="html">I am happy to join with you today in what will go down in history as the greatest demonstration for freedom in the history of our nation.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Looking-Glass house</title>
-      <link href="/looking-glass-house" rel="alternate" type="text/html" title="Looking-Glass house" />
-      <published>2020-12-12T00:00:00+09:00</published>
-      <updated>2020-12-12T00:00:00+09:00</updated>
-      <id>/looking-glass-house</id>
-      <content type="html" xml:base="/looking-glass-house">&lt;p&gt;One thing was certain, that the white kitten had had nothing to do with it:— it was the black kitten’s fault entirely. For the white kitten had been having its face washed by the old cat for the last quarter of an hour (and bearing it pretty well, considering); so you see that it couldn’t have had any hand in the mischief.
-The way Dinah washed her children’s faces was this: first she held the poor thing down by its ear with one paw, and then with the other paw she rubbed its face all over, the wrong way, beginning at the nose: and just now, as I said, she was hard at work on the white kitten, which was lying quite still and trying to purr — no doubt feeling that it was all meant for its good.
-But the black kitten had been finished with earlier in the afternoon, and so, while Alice was sitting curled up in a corner of the great arm-chair, half talking to herself and half asleep, the kitten had been having a grand game of romps with the ball of worsted Alice had been trying to wind up, and had been rolling it up and down till it had all come undone again; and there it was, spread over the hearth-rug, all knots and tangles, with the kitten running after its own tail in the middle.&lt;/p&gt;
-
-&lt;p&gt;‘Oh, you wicked little thing!’ cried Alice, catching up the kitten, and giving it a little kiss to make it understand that it was in disgrace. ‘Really, Dinah ought to have taught you better manners! You ought, Dinah, you know you ought!’ she added, looking reproachfully at the old cat, and speaking in as cross a voice as she could manage — and then she scrambled back into the arm-chair, taking the kitten and the worsted with her, and began winding up the ball again. But she didn’t get on very fast, as she was talking all the time, sometimes to the kitten, and sometimes to herself. Kitty sat very demurely on her knee, pretending to watch the progress of the winding, and now and then putting out one paw and gently touching the ball, as if it would be glad to help, if it might. ‘Do you know what to-morrow is, Kitty?’ Alice began. ‘You’d have guessed if you’d been up in the window with me — only Dinah was making you tidy, so you couldn’t. I was watching the boys getting in sticks for the bonfire — and it wants plenty of sticks, Kitty! Only it got so cold, and it snowed so, they had to leave off. Never mind, Kitty, we’ll go and see the bonfire to-morrow.’ Here Alice wound two or three turns of the worsted round the kitten’s neck, just to see how it would look: this led to a scramble, in which the ball rolled down upon the floor, and yards and yards of it got unwound again.&lt;/p&gt;
-
-&lt;p&gt;‘Do you know, I was so angry, Kitty,’ Alice went on as soon as they were comfortably settled again, ‘when I saw all the mischief you had been doing, I was very nearly opening the window, and putting you out into the snow! And you’d have deserved it, you little mischievous darling! What have you got to say for yourself? Now don’t interrupt me!’ she went on, holding up one finger. ‘I’m going to tell you all your faults. Number one: you squeaked twice while Dinah was washing your face this morning. Now you can’t deny it, Kitty: I heard you! What’s that you say?’ (pretending that the kitten was speaking.) ‘Her paw went into your eye? Well, that’s your fault, for keeping your eyes open — if you’d shut them tight up, it wouldn’t have happened. Now don’t make any more excuses, but listen! Number two: you pulled Snowdrop away by the tail just as I had put down the saucer of milk before her! What, you were thirsty, were you? How do you know she wasn’t thirsty too? Now for number three: you unwound every bit of the worsted while I wasn’t looking!
-‘That’s three faults, Kitty, and you’ve not been punished for any of them yet. You know I’m saving up all your punishments for Wednesday week — Suppose they had saved up all my punishments!’ she went on, talking more to herself than the kitten. ‘What would they do at the end of a year? I should be sent to prison, I suppose, when the day came. Or — let me see — suppose each punishment was to be going without a dinner: then, when the miserable day came, I should have to go without fifty dinners at once! Well, I shouldn’t mind that much! I’d far rather go without them than eat them! ‘Do you hear the snow against the window-panes, Kitty? How nice and soft it sounds! Just as if some one was kissing the window all over outside. I wonder if the snow loves the trees and fields, that it kisses them so gently? And then it covers them up snug, you know, with a white quilt; and perhaps it says, “Go to sleep, darlings, till the summer comes again.” And when they wake up in the summer, Kitty, they dress themselves all in green, and dance about — whenever the wind blows — oh, that’s very pretty!’ cried Alice, dropping the ball of worsted to clap her hands. ‘And I do so wish it was true! I’m sure the woods look sleepy in the autumn, when the leaves are getting brown. ‘Kitty, can you play chess? Now, don’t smile, my dear, I’m asking it seriously. Because, when we were playing just now, you watched just as if you understood it: and when I said “Check!” you purred! Well, it was a nice check, Kitty, and really I might have won, if it hadn’t been for that nasty Knight, that came wiggling down among my pieces. Kitty, dear, let’s pretend —’ And here I wish I could tell you half the things Alice used to say, beginning with her favourite phrase ‘Let’s pretend.’ She had had quite a long argument with her sister only the day before — all because Alice had begun with ‘Let’s pretend we’re kings and queens;’ and her sister, who liked being very exact, had argued that they couldn’t, because there were only two of them, and Alice had been reduced at last to say, ‘Well, you can be one of them then, and I’ll be all the rest.’ And once she had really frightened her old nurse by shouting suddenly in her ear, ‘Nurse! Do let’s pretend that I’m a hungry hyaena, and you’re a bone.’ But this is taking us away from Alice’s speech to the kitten. ‘Let’s pretend that you’re the Red Queen, Kitty! Do you know, I think if you sat up and folded your arms, you’d look exactly like her. Now do try, there’s a dear!’ And Alice got the Red Queen off the table, and set it up before the kitten as a model for it to imitate: however, the thing didn’t succeed, principally, Alice said, because the kitten wouldn’t fold its arms properly. So, to punish it, she held it up to the Looking-glass, that it might see how sulky it was —‘and if you’re not good directly,’ she added, ‘I’ll put you through into Looking-glass House. How would you like that?’
-‘Now, if you’ll only attend, Kitty, and not talk so much, I’ll tell you all my ideas about Looking-glass House. First, there’s the room you can see through the glass — that’s just the same as our drawing room, only the things go the other way. I can see all of it when I get upon a chair — all but the bit behind the fireplace. Oh! I do so wish I could see that bit! I want so much to know whether they’ve a fire in the winter: you never can tell, you know, unless our fire smokes, and then smoke comes up in that room too — but that may be only pretence, just to make it look as if they had a fire. Well then, the books are something like our books, only the words go the wrong way; I know that, because I’ve held up one of our books to the glass, and then they hold up one in the other room. ‘How would you like to live in Looking-glass House, Kitty? I wonder if they’d give you milk in there? Perhaps Looking-glass milk isn’t good to drink — But oh, Kitty! now we come to the passage. You can just see a little peep of the passage in Looking-glass House, if you leave the door of our drawing-room wide open: and it’s very like our passage as far as you can see, only you know it may be quite different on beyond. Oh, Kitty! how nice it would be if we could only get through into Looking-glass House! I’m sure it’s got, oh! such beautiful things in it! Let’s pretend there’s a way of getting through into it, somehow, Kitty. Let’s pretend the glass has got all soft like gauze, so that we can get through. Why, it’s turning into a sort of mist now, I declare! It’ll be easy enough to get through —’ She was up on the chimney-piece while she said this, though she hardly knew how she had got there. And certainly the glass was beginning to melt away, just like a bright silvery mist.&lt;/p&gt;
-
-&lt;p&gt;In another moment Alice was through the glass, and had jumped lightly down into the Looking-glass room. The very first thing she did was to look whether there was a fire in the fireplace, and she was quite pleased to find that there was a real one, blazing away as brightly as the one she had left behind. ‘So I shall be as warm here as I was in the old room,’ thought Alice: ‘warmer, in fact, because there’ll be no one here to scold me away from the fire. Oh, what fun it’ll be, when they see me through the glass in here, and can’t get at me!’&lt;/p&gt;
-
-&lt;p&gt;Then she began looking about, and noticed that what could be seen from the old room was quite common and uninteresting, but that all the rest was as different as possible. For instance, the pictures on the wall next the fire seemed to be all alive, and the very clock on the chimney-piece (you know you can only see the back of it in the Looking-glass) had got the face of a little old man, and grinned at her.
-‘They don’t keep this room so tidy as the other,’ Alice thought to herself, as she noticed several of the chessmen down in the hearth among the cinders: but in another moment, with a little ‘Oh!’ of surprise, she was down on her hands and knees watching them. The chessmen were walking about, two and two!&lt;/p&gt;
-
-&lt;p&gt;‘Here are the Red King and the Red Queen,’ Alice said (in a whisper, for fear of frightening them), ‘and there are the White King and the White Queen sitting on the edge of the shovel — and here are two castles walking arm in arm — I don’t think they can hear me,’ she went on, as she put her head closer down, ‘and I’m nearly sure they can’t see me. I feel somehow as if I were invisible —’ Here something began squeaking on the table behind Alice, and made her turn her head just in time to see one of the White Pawns roll over and begin kicking: she watched it with great curiosity to see what would happen next.
-‘It is the voice of my child!’ the White Queen cried out as she rushed past the King, so violently that she knocked him over among the cinders. ‘My precious Lily! My imperial kitten!’ and she began scrambling wildly up the side of the fender. ‘Imperial fiddlestick!’ said the King, rubbing his nose, which had been hurt by the fall. He had a right to be a little annoyed with the Queen, for he was covered with ashes from head to foot. Alice was very anxious to be of use, and, as the poor little Lily was nearly screaming herself into a fit, she hastily picked up the Queen and set her on the table by the side of her noisy little daughter.
-The Queen gasped, and sat down: the rapid journey through the air had quite taken away her breath and for a minute or two she could do nothing but hug the little Lily in silence. As soon as she had recovered her breath a little, she called out to the White King, who was sitting sulkily among the ashes, ‘Mind the volcano!’
-‘What volcano?’ said the King, looking up anxiously into the fire, as if he thought that was the most likely place to find one. ‘Blew — me — up,’ panted the Queen, who was still a little out of breath. ‘Mind you come up — the regular way — don’t get blown up!’ Alice watched the White King as he slowly struggled up from bar to bar, till at last she said, ‘Why, you’ll be hours and hours getting to the table, at that rate. I’d far better help you, hadn’t I?’ But the King took no notice of the question: it was quite clear that he could neither hear her nor see her.
-So Alice picked him up very gently, and lifted him across more slowly than she had lifted the Queen, that she mightn’t take his breath away: but, before she put him on the table, she thought she might as well dust him a little, he was so covered with ashes.&lt;/p&gt;
-
-&lt;p&gt;She said afterwards that she had never seen in all her life such a face as the King made, when he found himself held in the air by an invisible hand, and being dusted: he was far too much astonished to cry out, but his eyes and his mouth went on getting larger and larger, and rounder and rounder, till her hand shook so with laughing that she nearly let him drop upon the floor.
-‘Oh! please don’t make such faces, my dear!’ she cried out, quite forgetting that the King couldn’t hear her. ‘You make me laugh so that I can hardly hold you! And don’t keep your mouth so wide open! All the ashes will get into it — there, now I think you’re tidy enough!’ she added, as she smoothed his hair, and set him upon the table near the Queen. The King immediately fell flat on his back, and lay perfectly still: and Alice was a little alarmed at what she had done, and went round the room to see if she could find any water to throw over him. However, she could find nothing but a bottle of ink, and when she got back with it she found he had recovered, and he and the Queen were talking together in a frightened whisper — so low, that Alice could hardly hear what they said.
-The King was saying, ‘I assure, you my dear, I turned cold to the very ends of my whiskers!’
-To which the Queen replied, ‘You haven’t got any whiskers.’
-‘The horror of that moment,’ the King went on, ‘I shall never, never forget!’ ‘You will, though,’ the Queen said, ‘if you don’t make a memorandum of it.’ Alice looked on with great interest as the King took an enormous memorandum-book out of his pocket, and began writing. A sudden thought struck her, and she took hold of the end of the pencil, which came some way over his shoulder, and began writing for him.
-The poor King looked puzzled and unhappy, and struggled with the pencil for some time without saying anything; but Alice was too strong for him, and at last he panted out, ‘My dear! I really must get a thinner pencil. I can’t manage this one a bit; it writes all manner of things that I don’t intend —’
-‘What manner of things?’ said the Queen, looking over the book (in which Alice had put ‘the White Knight is sliding down the poker. He balances very badly’) ‘That’s not a memorandum of your feelings!’&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>qkrqjatn218</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="linux" />
-      
-
-      
-        <summary type="html">One thing was certain, that the white kitten had had nothing to do with it:— it was the black kitten’s fault entirely. For the white kitten had been having its face washed by the old cat for the last quarter of an hour (and bearing it pretty well, considering); so you see that it couldn’t have had any hand in the mischief. The way Dinah washed her children’s faces was this: first she held the poor thing down by its ear with one paw, and then with the other paw she rubbed its face all over, the wrong way, beginning at the nose: and just now, as I said, she was hard at work on the white kitten, which was lying quite still and trying to purr — no doubt feeling that it was all meant for its good. But the black kitten had been finished with earlier in the afternoon, and so, while Alice was sitting curled up in a corner of the great arm-chair, half talking to herself and half asleep, the kitten had been having a grand game of romps with the ball of worsted Alice had been trying to wind up, and had been rolling it up and down till it had all come undone again; and there it was, spread over the hearth-rug, all knots and tangles, with the kitten running after its own tail in the middle.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">network working</title>
-      <link href="/network-working" rel="alternate" type="text/html" title="network working" />
-      <published>2020-12-12T00:00:00+09:00</published>
-      <updated>2020-12-12T00:00:00+09:00</updated>
-      <id>/network%20working</id>
-      <content type="html" xml:base="/network-working">&lt;h3 id=&quot;network-subnet-mask&quot;&gt;network subnet mask&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;192.168.10.139&lt;/p&gt;
-&lt;/blockquote&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>qkrqjatn218</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="network" />
-      
-
-      
-        <summary type="html">network subnet mask</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Out to Sea</title>
-      <link href="/out-to-sea" rel="alternate" type="text/html" title="Out to Sea" />
-      <published>2020-12-12T00:00:00+09:00</published>
-      <updated>2020-12-12T00:00:00+09:00</updated>
-      <id>/out-to-sea</id>
-      <content type="html" xml:base="/out-to-sea">&lt;p&gt;I had this story from one who had no business to tell it to me, or to any other. I may credit the seductive influence of an old vintage upon the narrator for the beginning of it, and my own skeptical incredulity during the days that followed for the balance of the strange tale.&lt;/p&gt;
-
-&lt;p&gt;When my convivial host discovered that he had told me so much, and that I was prone to doubtfulness, his foolish pride assumed the task the old vintage had commenced, and so he unearthed written evidence in the form of musty manuscript, and dry official records of the British Colonial Office to support many of the salient features of his remarkable narrative.&lt;/p&gt;
-
-&lt;p&gt;I do not say the story is true, for I did not witness the happenings which it portrays, but the fact that in the telling of it to you I have taken fictitious names for the principal characters quite sufficiently evidences the sincerity of my own belief that it MAY be true.&lt;/p&gt;
-
-&lt;p&gt;The yellow, mildewed pages of the diary of a man long dead, and the records of the Colonial Office dovetail perfectly with the narrative of my convivial host, and so I give you the story as I painstakingly pieced it out from these several various agencies.&lt;/p&gt;
-
-&lt;p&gt;If you do not find it credible you will at least be as one with me in acknowledging that it is unique, remarkable, and interesting.&lt;/p&gt;
-
-&lt;p&gt;From the records of the Colonial Office and from the dead man’s diary we learn that a certain young English nobleman, whom we shall call John Clayton, Lord Greystoke, was commissioned to make a peculiarly delicate investigation of conditions in a British West Coast African Colony from whose simple native inhabitants another European power was known to be recruiting soldiers for its native army, which it used solely for the forcible collection of rubber and ivory from the savage tribes along the Congo and the Aruwimi. The natives of the British Colony complained that many of their young men were enticed away through the medium of fair and glowing promises, but that few if any ever returned to their families.&lt;/p&gt;
-
-&lt;p&gt;The Englishmen in Africa went even further, saying that these poor blacks were held in virtual slavery, since after their terms of enlistment expired their ignorance was imposed upon by their white officers, and they were told that they had yet several years to serve.&lt;/p&gt;
-
-&lt;p&gt;And so the Colonial Office appointed John Clayton to a new post in British West Africa, but his confidential instructions centered on a thorough investigation of the unfair treatment of black British subjects by the officers of a friendly European power. Why he was sent, is, however, of little moment to this story, for he never made an investigation, nor, in fact, did he ever reach his destination.&lt;/p&gt;
-
-&lt;p&gt;Clayton was the type of Englishman that one likes best to associate with the noblest monuments of historic achievement upon a thousand victorious battlefields–a strong, virile man –mentally, morally, and physically.&lt;/p&gt;
-
-&lt;p&gt;In stature he was above the average height; his eyes were gray, his features regular and strong; his carriage that of perfect, robust health influenced by his years of army training.&lt;/p&gt;
-
-&lt;p&gt;Political ambition had caused him to seek transference from the army to the Colonial Office and so we find him, still young, entrusted with a delicate and important commission in the service of the Queen.&lt;/p&gt;
-
-&lt;p&gt;When he received this appointment he was both elated and appalled. The preferment seemed to him in the nature of a well-merited reward for painstaking and intelligent service, and as a stepping stone to posts of greater importance and responsibility; but, on the other hand, he had been married to the Hon. Alice Rutherford for scarce a three months, and it was the thought of taking this fair young girl into the dangers and isolation of tropical Africa that appalled him.&lt;/p&gt;
-
-&lt;p&gt;For her sake he would have refused the appointment, but she would not have it so. Instead she insisted that he accept, and, indeed, take her with him.&lt;/p&gt;
-
-&lt;p&gt;There were mothers and brothers and sisters, and aunts and cousins to express various opinions on the subject, but as to what they severally advised history is silent.&lt;/p&gt;
-
-&lt;p&gt;We know only that on a bright May morning in 1888, John, Lord Greystoke, and Lady Alice sailed from Dover on their way to Africa.&lt;/p&gt;
-
-&lt;p&gt;A month later they arrived at Freetown where they chartered a small sailing vessel, the Fuwalda, which was to bear them to their final destination.&lt;/p&gt;
-
-&lt;p&gt;And here John, Lord Greystoke, and Lady Alice, his wife, vanished from the eyes and from the knowledge of men.&lt;/p&gt;
-
-&lt;p&gt;Two months after they weighed anchor and cleared from the port of Freetown a half dozen British war vessels were scouring the south Atlantic for trace of them or their little vessel, and it was almost immediately that the wreckage was found upon the shores of St. Helena which convinced the world that the Fuwalda had gone down with all on board, and hence the search was stopped ere it had scarce begun; though hope lingered in longing hearts for many years.&lt;/p&gt;
-
-&lt;p&gt;The Fuwalda, a barkentine of about one hundred tons, was a vessel of the type often seen in coastwise trade in the far southern Atlantic, their crews composed of the offscourings of the sea–unhanged murderers and cutthroats of every race and every nation.&lt;/p&gt;
-
-&lt;p&gt;The Fuwalda was no exception to the rule. Her officers were swarthy bullies, hating and hated by their crew. The captain, while a competent seaman, was a brute in his treatment of his men. He knew, or at least he used, but two arguments in his dealings with them–a belaying pin and a revolver–nor is it likely that the motley aggregation he signed would have understood aught else.&lt;/p&gt;
-
-&lt;p&gt;So it was that from the second day out from Freetown John Clayton and his young wife witnessed scenes upon the deck of the Fuwalda such as they had believed were never enacted outside the covers of printed stories of the sea.&lt;/p&gt;
-
-&lt;p&gt;It was on the morning of the second day that the first link was forged in what was destined to form a chain of circumstances ending in a life for one then unborn such as has never been paralleled in the history of man.&lt;/p&gt;
-
-&lt;p&gt;Two sailors were washing down the decks of the Fuwalda, the first mate was on duty, and the captain had stopped to speak with John Clayton and Lady Alice.&lt;/p&gt;
-
-&lt;p&gt;The men were working backwards toward the little party who were facing away from the sailors. Closer and closer they came, until one of them was directly behind the captain. In another moment he would have passed by and this strange narrative would never have been recorded.&lt;/p&gt;
-
-&lt;p&gt;But just that instant the officer turned to leave Lord and Lady Greystoke, and, as he did so, tripped against the sailor and sprawled headlong upon the deck, overturning the water- pail so that he was drenched in its dirty contents.&lt;/p&gt;
-
-&lt;p&gt;For an instant the scene was ludicrous; but only for an instant. With a volley of awful oaths, his face suffused with the scarlet of mortification and rage, the captain regained his feet, and with a terrific blow felled the sailor to the deck.&lt;/p&gt;
-
-&lt;p&gt;The man was small and rather old, so that the brutality of the act was thus accentuated. The other seaman, however, was neither old nor small–a huge bear of a man, with fierce black mustachios, and a great bull neck set between massive shoulders.&lt;/p&gt;
-
-&lt;p&gt;As he saw his mate go down he crouched, and, with a low snarl, sprang upon the captain crushing him to his knees with a single mighty blow.&lt;/p&gt;
-
-&lt;p&gt;From scarlet the officer’s face went white, for this was mutiny; and mutiny he had met and subdued before in his brutal career. Without waiting to rise he whipped a revolver from his pocket, firing point blank at the great mountain of muscle towering before him; but, quick as he was, John Clayton was almost as quick, so that the bullet which was intended for the sailor’s heart lodged in the sailor’s leg instead, for Lord Greystoke had struck down the captain’s arm as he had seen the weapon flash in the sun.&lt;/p&gt;
-
-&lt;p&gt;Words passed between Clayton and the captain, the former making it plain that he was disgusted with the brutality displayed toward the crew, nor would he countenance anything further of the kind while he and Lady Greystoke remained passengers.&lt;/p&gt;
-
-&lt;p&gt;The captain was on the point of making an angry reply, but, thinking better of it, turned on his heel and black and scowling, strode aft.&lt;/p&gt;
-
-&lt;p&gt;He did not care to antagonize an English official, for the Queen’s mighty arm wielded a punitive instrument which he could appreciate, and which he feared–England’s far-reaching navy.&lt;/p&gt;
-
-&lt;p&gt;The two sailors picked themselves up, the older man assisting his wounded comrade to rise. The big fellow, who was known among his mates as Black Michael, tried his leg gingerly, and, finding that it bore his weight, turned to Clayton with a word of gruff thanks.&lt;/p&gt;
-
-&lt;p&gt;Though the fellow’s tone was surly, his words were evidently well meant. Ere he had scarce finished his little speech he had turned and was limping off toward the forecastle with the very apparent intention of forestalling any further conversation.&lt;/p&gt;
-
-&lt;p&gt;They did not see him again for several days, nor did the captain accord them more than the surliest of grunts when he was forced to speak to them.&lt;/p&gt;
-
-&lt;p&gt;They took their meals in his cabin, as they had before the unfortunate occurrence; but the captain was careful to see that his duties never permitted him to eat at the same time.&lt;/p&gt;
-
-&lt;p&gt;The other officers were coarse, illiterate fellows, but little above the villainous crew they bullied, and were only too glad to avoid social intercourse with the polished English noble and his lady, so that the Claytons were left very much to themselves.&lt;/p&gt;
-
-&lt;p&gt;This in itself accorded perfectly with their desires, but it also rather isolated them from the life of the little ship so that they were unable to keep in touch with the daily happenings which were to culminate so soon in bloody tragedy.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>qkrqjatn218</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="issue" />
-      
-
-      
-        <summary type="html">I had this story from one who had no business to tell it to me, or to any other. I may credit the seductive influence of an old vintage upon the narrator for the beginning of it, and my own skeptical incredulity during the days that followed for the balance of the strange tale.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">The Purpose of Education</title>
-      <link href="/the-purpose-of-education" rel="alternate" type="text/html" title="The Purpose of Education" />
-      <published>2020-12-12T00:00:00+09:00</published>
-      <updated>2020-12-12T00:00:00+09:00</updated>
-      <id>/the-purpose-of-education</id>
-      <content type="html" xml:base="/the-purpose-of-education">&lt;p&gt;As I engage in the so-called “bull sessions” around and about the school, I too often find that most college men have a misconception of the purpose of education. Most of the “brethren” think that education should equip them with the proper instruments of exploitation so that they can forever trample over the masses. Still others think that education should furnish them with noble ends rather than means to an end.&lt;/p&gt;
-
-&lt;p&gt;It seems to me that education has a two-fold function to perform in the life of man and in society: the one is utility and the other is culture. Education must enable a man to become more efficient, to achieve with increasing facility the ligitimate goals of his life.&lt;/p&gt;
-
-&lt;p&gt;Education must also train one for quick, resolute and effective thinking. To think incisively and to think for one’s self is very difficult. We are prone to let our mental life become invaded by legions of half truths, prejudices, and propaganda. At this point, I often wonder whether or not education is fulfilling its purpose. A great majority of the so-called educated people do not think logically and scientifically. Even the press, the classroom, the platform, and the pulpit in many instances do not give us objective and unbiased truths. To save man from the morass of propaganda, in my opinion, is one of the chief aims of education. Education must enable one to sift and weigh evidence, to discern the true from the false, the real from the unreal, and the facts from the fiction.&lt;/p&gt;
-
-&lt;p&gt;The function of education, therefore, is to teach one to think intensively and to think critically. But education which stops with efficiency may prove the greatest menace to society. The most dangerous criminal may be the man gifted with reason, but with no morals.&lt;/p&gt;
-
-&lt;p&gt;The late Eugene Talmadge, in my opinion, possessed one of the better minds of Georgia, or even America. Moreover, he wore the Phi Beta Kappa key. By all measuring rods, Mr. Talmadge could think critically and intensively; yet he contends that I am an inferior being. Are those the types of men we call educated?&lt;/p&gt;
-
-&lt;p&gt;We must remember that intelligence is not enough. Intelligence plus character–that is the goal of true education. The complete education gives one not only power of concentration, but worthy objectives upon which to concentrate. The broad education will, therefore, transmit to one not only the accumulated knowledge of the race but also the accumulated experience of social living.&lt;/p&gt;
-
-&lt;p&gt;If we are not careful, our colleges will produce a group of close-minded, unscientific, illogical propagandists, consumed with immoral acts. Be careful, “brethren!” Be careful, teachers!&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>qkrqjatn218</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="issue" />
-      
-
-      
-        <summary type="html">As I engage in the so-called “bull sessions” around and about the school, I too often find that most college men have a misconception of the purpose of education. Most of the “brethren” think that education should equip them with the proper instruments of exploitation so that they can forever trample over the masses. Still others think that education should furnish them with noble ends rather than means to an end.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Advanced Markdown tips</title>
-      <link href="/advanced-markdown" rel="alternate" type="text/html" title="Advanced Markdown tips" />
-      <published>2020-12-12T00:00:00+09:00</published>
-      <updated>2020-12-12T00:00:00+09:00</updated>
-      <id>/advanced-markdown</id>
-      <content type="html" xml:base="/advanced-markdown">&lt;p&gt;There are lots of powerful things you can do with the Ghost editor&lt;/p&gt;
-&lt;p&gt;If you've gotten pretty comfortable with &lt;a href=&quot;/the-editor/&quot;&gt;all the basics&lt;/a&gt; of writing in Ghost, then you may enjoy some more advanced tips about the types of things you can do with Markdown!&lt;/p&gt;
-&lt;p&gt;As with the last post about the editor, you'll want to be actually editing this post as you read it so that you can see all the Markdown code we're using.&lt;/p&gt;
-&lt;h2 id=&quot;specialformatting&quot;&gt;Special formatting&lt;/h2&gt;
-&lt;p&gt;As well as bold and italics, you can also use some other special formatting in Markdown when the need arises, for example:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;s&gt;strike through&lt;/s&gt;&lt;/li&gt;
-&lt;li&gt;&lt;mark&gt;highlight&lt;/mark&gt;&lt;/li&gt;
-&lt;li&gt;*escaped characters*&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;writingcodeblocks&quot;&gt;Writing code blocks&lt;/h2&gt;
-&lt;p&gt;There are two types of code elements which can be inserted in Markdown, the first is inline, and the other is block. Inline code is formatted by wrapping any word or words in back-ticks, &lt;code&gt;like this&lt;/code&gt;. Larger snippets of code can be displayed across multiple lines using triple back ticks:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;.my-link {
-    text-decoration: underline;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If you want to get really fancy, you can even add syntax highlighting using &lt;a href=&quot;http://prismjs.com/&quot;&gt;Prism.js&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;fullbleedimages&quot;&gt;Full bleed images&lt;/h2&gt;
-&lt;p&gt;One neat trick which you can use in Markdown to distinguish between different types of images is to add a &lt;code&gt;#hash&lt;/code&gt; value to the end of the source URL, and then target images containing the hash with special styling. For example:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://casper.ghost.org/v1.0.0/images/walking.jpg#full&quot; alt=&quot;walking&quot;&gt;&lt;/p&gt;
-&lt;p&gt;which is styled with...&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;img[src$=&amp;quot;#full&amp;quot;] {
-    max-width: 100vw;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This creates full-bleed images in the Casper theme, which stretch beyond their usual boundaries right up to the edge of the window. Every theme handles these types of things slightly differently, but it's a great trick to play with if you want to have a variety of image sizes and styles.&lt;/p&gt;
-&lt;h2 id=&quot;referencelists&quot;&gt;Reference lists&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;The quick brown &lt;a href=&quot;https://en.wikipedia.org/wiki/Fox&quot; title=&quot;Wikipedia: Fox&quot;&gt;fox&lt;/a&gt;, jumped over the lazy &lt;a href=&quot;https://en.wikipedia.org/wiki/Dog&quot; title=&quot;Wikipedia: Dog&quot;&gt;dog&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Another way to insert links in markdown is using reference lists. You might want to use this style of linking to cite reference material in a Wikipedia-style. All of the links are listed at the end of the document, so you can maintain full separation between content and its source or reference.&lt;/p&gt;
-&lt;h2 id=&quot;creatingfootnotes&quot;&gt;Creating footnotes&lt;/h2&gt;
-&lt;p&gt;The quick brown fox&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn1&quot; id=&quot;fnref1&quot;&gt;[1]&lt;/a&gt;&lt;/sup&gt; jumped over the lazy dog&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn2&quot; id=&quot;fnref2&quot;&gt;[2]&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-&lt;p&gt;Footnotes are a great way to add additional contextual details when appropriate. Ghost will automatically add footnote content to the very end of your post.&lt;/p&gt;
-&lt;h2 id=&quot;fullhtml&quot;&gt;Full HTML&lt;/h2&gt;
-&lt;p&gt;Perhaps the best part of Markdown is that you're never limited to just Markdown. You can write HTML directly in the Ghost editor and it will just work as HTML usually does. No limits! Here's a standard YouTube embed code as an example:&lt;/p&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Cniqsc9QfDo?rel=0&amp;amp;showinfo=0&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;hr class=&quot;footnotes-sep&quot;&gt;
-&lt;section class=&quot;footnotes&quot;&gt;
-&lt;ol class=&quot;footnotes-list&quot;&gt;
-&lt;li id=&quot;fn1&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Foxes are red &lt;a href=&quot;#fnref1&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&quot;fn2&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Dogs are usually not red &lt;a href=&quot;#fnref2&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>qkrqjatn218</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="Getting started" />
-      
-
-      
-        <summary type="html">There are lots of powerful things you can do with the Ghost editor If you've gotten pretty comfortable with all the basics of writing in Ghost, then you may enjoy some more advanced tips about the types of things you can do with Markdown! As with the last post about the editor, you'll want to be actually editing this post as you read it so that you can see all the Markdown code we're using. Special formatting As well as bold and italics, you can also use some other special formatting in Markdown when the need arises, for example: strike through highlight *escaped characters* Writing code blocks There are two types of code elements which can be inserted in Markdown, the first is inline, and the other is block. Inline code is formatted by wrapping any word or words in back-ticks, like this. Larger snippets of code can be displayed across multiple lines using triple back ticks: .my-link { text-decoration: underline; } If you want to get really fancy, you can even add syntax highlighting using Prism.js. Full bleed images One neat trick which you can use in Markdown to distinguish between different types of images is to add a #hash value to the end of the source URL, and then target images containing the hash with special styling. For example: which is styled with... img[src$=&amp;quot;#full&amp;quot;] { max-width: 100vw; } This creates full-bleed images in the Casper theme, which stretch beyond their usual boundaries right up to the edge of the window. Every theme handles these types of things slightly differently, but it's a great trick to play with if you want to have a variety of image sizes and styles. Reference lists The quick brown fox, jumped over the lazy dog. Another way to insert links in markdown is using reference lists. You might want to use this style of linking to cite reference material in a Wikipedia-style. All of the links are listed at the end of the document, so you can maintain full separation between content and its source or reference. Creating footnotes The quick brown fox[1] jumped over the lazy dog[2]. Footnotes are a great way to add additional contextual details when appropriate. Ghost will automatically add footnote content to the very end of your post. Full HTML Perhaps the best part of Markdown is that you're never limited to just Markdown. You can write HTML directly in the Ghost editor and it will just work as HTML usually does. No limits! Here's a standard YouTube embed code as an example: Foxes are red ↩︎ Dogs are usually not red ↩︎</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Managing Ghost users</title>
-      <link href="/managing-users" rel="alternate" type="text/html" title="Managing Ghost users" />
-      <published>2020-12-12T00:00:00+09:00</published>
-      <updated>2020-12-12T00:00:00+09:00</updated>
-      <id>/managing-users</id>
-      <content type="html" xml:base="/managing-users">&lt;p&gt;Ghost has a number of different user roles for your team&lt;/p&gt;
-&lt;h3 id=&quot;authors&quot;&gt;Authors&lt;/h3&gt;
-&lt;p&gt;The base user level in Ghost is an author. Authors can write posts, edit their own posts, and publish their own posts. Authors are &lt;strong&gt;trusted&lt;/strong&gt; users. If you don't trust users to be allowed to publish their own posts, you shouldn't invite them to Ghost admin.&lt;/p&gt;
-&lt;h3 id=&quot;editors&quot;&gt;Editors&lt;/h3&gt;
-&lt;p&gt;Editors are the 2nd user level in Ghost. Editors can do everything that an Author can do, but they can also edit and publish the posts of others - as well as their own. Editors can also invite new authors to the site.&lt;/p&gt;
-&lt;h3 id=&quot;administrators&quot;&gt;Administrators&lt;/h3&gt;
-&lt;p&gt;The top user level in Ghost is Administrator. Again, administrators can do everything that Authors and Editors can do, but they can also edit all site settings and data, not just content. Additionally, administrators have full access to invite, manage or remove any other user of the site.&lt;/p&gt;
-&lt;h3 id=&quot;theowner&quot;&gt;The Owner&lt;/h3&gt;
-&lt;p&gt;There is only ever one owner of a Ghost site. The owner is a special user which has all the same permissions as an Administrator, but with two exceptions: The Owner can never be deleted. And in some circumstances the owner will have access to additional special settings if applicable — for example, billing details, if using Ghost(Pro).&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;It's a good idea to ask all of your users to fill out their user profiles, including bio and social links. These will populate rich structured data for posts and generally create more opportunities for themes to fully populate their design.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>qkrqjatn218</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="Getting started" />
-      
-
-      
-        <summary type="html">Ghost has a number of different user roles for your team Authors The base user level in Ghost is an author. Authors can write posts, edit their own posts, and publish their own posts. Authors are trusted users. If you don't trust users to be allowed to publish their own posts, you shouldn't invite them to Ghost admin. Editors Editors are the 2nd user level in Ghost. Editors can do everything that an Author can do, but they can also edit and publish the posts of others - as well as their own. Editors can also invite new authors to the site. Administrators The top user level in Ghost is Administrator. Again, administrators can do everything that Authors and Editors can do, but they can also edit all site settings and data, not just content. Additionally, administrators have full access to invite, manage or remove any other user of the site. The Owner There is only ever one owner of a Ghost site. The owner is a special user which has all the same permissions as an Administrator, but with two exceptions: The Owner can never be deleted. And in some circumstances the owner will have access to additional special settings if applicable — for example, billing details, if using Ghost(Pro). It's a good idea to ask all of your users to fill out their user profiles, including bio and social links. These will populate rich structured data for posts and generally create more opportunities for themes to fully populate their design.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Using the Ghost editor</title>
-      <link href="/the-editor" rel="alternate" type="text/html" title="Using the Ghost editor" />
-      <published>2020-12-12T00:00:00+09:00</published>
-      <updated>2020-12-12T00:00:00+09:00</updated>
-      <id>/the-editor</id>
-      <content type="html" xml:base="/the-editor">&lt;p&gt;Ghost uses a language called &lt;strong&gt;Markdown&lt;/strong&gt; to format text.&lt;/p&gt;
-&lt;p&gt;When you go to edit a post and see special characters and colours intertwined between the words, those are Markdown shortcuts which tell Ghost what to do with the words in your document. The biggest benefit of Markdown is that you can quickly apply formatting as you type, without needing to pause.&lt;/p&gt;
-&lt;p&gt;At the bottom of the editor, you'll find a toolbar with basic formatting options to help you get started as easily as possible. You'll also notice that there's a &lt;strong&gt;?&lt;/strong&gt; icon, which contains more advanced shortcuts.&lt;/p&gt;
-&lt;p&gt;For now, though, let's run you through some of the basics. You'll want to make sure you're editing this post in order to see all the Markdown we've used.&lt;/p&gt;
-&lt;h2 id=&quot;formattingtext&quot;&gt;Formatting text&lt;/h2&gt;
-&lt;p&gt;The most common shortcuts are of course, &lt;strong&gt;bold&lt;/strong&gt; text, &lt;em&gt;italic&lt;/em&gt; text, and &lt;a href=&quot;https://example.com&quot;&gt;hyperlinks&lt;/a&gt;. These generally make up the bulk of any document. You can type the characters out, but you can also use keyboard shortcuts.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;CMD/Ctrl + B&lt;/code&gt; for Bold&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;CMD/Ctrl + I&lt;/code&gt; for Italic&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;CMD/Ctrl + K&lt;/code&gt; for a Link&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;CMD/Ctrl + H&lt;/code&gt; for a Heading (Press multiple times for h2/h3/h4/etc)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;With just a couple of extra characters here and there, you're well on your way to creating a beautifully formatted story.&lt;/p&gt;
-&lt;h2 id=&quot;insertingimages&quot;&gt;Inserting images&lt;/h2&gt;
-&lt;p&gt;Images in Markdown look just the same as links, except they're prefixed with an exclamation mark, like this:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;![Image description](/path/to/image.jpg)&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://casper.ghost.org/v1.0.0/images/computer.jpg&quot; alt=&quot;Computer&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Most Markdown editors don't make you type this out, though. In Ghost you can click on the image icon in the toolbar at the bottom of the editor, or you can just click and drag an image from your desktop directly into the editor. Both will upload the image for you and generate the appropriate Markdown.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;&lt;strong&gt;Important Note:&lt;/strong&gt; Ghost does not currently have automatic image resizing, so it's always a good idea to make sure your images aren't gigantic files &lt;strong&gt;before&lt;/strong&gt; uploading them to Ghost.&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id=&quot;makinglists&quot;&gt;Making lists&lt;/h2&gt;
-&lt;p&gt;Lists in HTML are a formatting nightmare, but in Markdown they become an absolute breeze with just a couple of characters and a bit of smart automation. For numbered lists, just write out the numbers. For bullet lists, just use &lt;code&gt;*&lt;/code&gt; or &lt;code&gt;-&lt;/code&gt; or &lt;code&gt;+&lt;/code&gt;. Like this:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Crack the eggs over a bowl&lt;/li&gt;
-&lt;li&gt;Whisk them together&lt;/li&gt;
-&lt;li&gt;Make an omellete&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;or&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Remember to buy milk&lt;/li&gt;
-&lt;li&gt;Feed the cat&lt;/li&gt;
-&lt;li&gt;Come up with idea for next story&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;addingquotes&quot;&gt;Adding quotes&lt;/h2&gt;
-&lt;p&gt;When you want to pull out a particularly good except in the middle of a piece, you can use &lt;code&gt;&amp;gt;&lt;/code&gt; at the beginning of a paragraph to turn it into a Blockquote. You might've seen this formatting before in email clients.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;A well placed quote guides a reader through a story, helping them to understand the most important points being made&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;All themes handles blockquotes slightly differently. Sometimes they'll look better kept shorter, while other times you can quote fairly hefty amounts of text and get away with it. Generally, the safest option is to use blockquotes sparingly.&lt;/p&gt;
-&lt;h2 id=&quot;dividingthingsup&quot;&gt;Dividing things up&lt;/h2&gt;
-&lt;p&gt;If you're writing a piece in parts and you just feel like you need to divide a couple of sections distinctly from each other, a horizontal rule might be just what you need. Dropping &lt;code&gt;---&lt;/code&gt; on a new line will create a sleak divider, anywhere you want it.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;This should get you going with the vast majority of what you need to do in the editor, but if you're still curious about more advanced tips then check out the &lt;a href=&quot;/advanced-markdown/&quot;&gt;Advanced Markdown Guide&lt;/a&gt; - or if you'd rather learn about how Ghost taxononomies work, we've got a overview of &lt;a href=&quot;/using-tags/&quot;&gt;how to use Ghost tags&lt;/a&gt;.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>qkrqjatn218</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="Getting started" />
-      
-
-      
-        <summary type="html">Ghost uses a language called Markdown to format text. When you go to edit a post and see special characters and colours intertwined between the words, those are Markdown shortcuts which tell Ghost what to do with the words in your document. The biggest benefit of Markdown is that you can quickly apply formatting as you type, without needing to pause. At the bottom of the editor, you'll find a toolbar with basic formatting options to help you get started as easily as possible. You'll also notice that there's a ? icon, which contains more advanced shortcuts. For now, though, let's run you through some of the basics. You'll want to make sure you're editing this post in order to see all the Markdown we've used. Formatting text The most common shortcuts are of course, bold text, italic text, and hyperlinks. These generally make up the bulk of any document. You can type the characters out, but you can also use keyboard shortcuts. CMD/Ctrl + B for Bold CMD/Ctrl + I for Italic CMD/Ctrl + K for a Link CMD/Ctrl + H for a Heading (Press multiple times for h2/h3/h4/etc) With just a couple of extra characters here and there, you're well on your way to creating a beautifully formatted story. Inserting images Images in Markdown look just the same as links, except they're prefixed with an exclamation mark, like this: ![Image description](/path/to/image.jpg) Most Markdown editors don't make you type this out, though. In Ghost you can click on the image icon in the toolbar at the bottom of the editor, or you can just click and drag an image from your desktop directly into the editor. Both will upload the image for you and generate the appropriate Markdown. Important Note: Ghost does not currently have automatic image resizing, so it's always a good idea to make sure your images aren't gigantic files before uploading them to Ghost. Making lists Lists in HTML are a formatting nightmare, but in Markdown they become an absolute breeze with just a couple of characters and a bit of smart automation. For numbered lists, just write out the numbers. For bullet lists, just use * or - or +. Like this: Crack the eggs over a bowl Whisk them together Make an omellete or Remember to buy milk Feed the cat Come up with idea for next story Adding quotes When you want to pull out a particularly good except in the middle of a piece, you can use &amp;gt; at the beginning of a paragraph to turn it into a Blockquote. You might've seen this formatting before in email clients. A well placed quote guides a reader through a story, helping them to understand the most important points being made All themes handles blockquotes slightly differently. Sometimes they'll look better kept shorter, while other times you can quote fairly hefty amounts of text and get away with it. Generally, the safest option is to use blockquotes sparingly. Dividing things up If you're writing a piece in parts and you just feel like you need to divide a couple of sections distinctly from each other, a horizontal rule might be just what you need. Dropping --- on a new line will create a sleak divider, anywhere you want it. This should get you going with the vast majority of what you need to do in the editor, but if you're still curious about more advanced tips then check out the Advanced Markdown Guide - or if you'd rather learn about how Ghost taxononomies work, we've got a overview of how to use Ghost tags.</summary>
       
 
       
