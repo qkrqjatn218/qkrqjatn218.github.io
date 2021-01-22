@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="/author/qkrqjatn218/feed.xml" rel="self" type="application/atom+xml" />
   <link href="/" rel="alternate" type="text/html" />
-  <updated>2021-01-22T17:10:08+09:00</updated>
+  <updated>2021-01-22T17:35:03+09:00</updated>
   <id>/author/qkrqjatn218/feed.xml</id>
 
   
@@ -170,8 +170,6 @@ python은 리스트를 지원(라이브러리를 통해 배열사용가능)
       
 
       
-        <category term="C" />
-      
         <category term="programming" />
       
 
@@ -184,8 +182,8 @@ python은 리스트를 지원(라이브러리를 통해 배열사용가능)
     </entry>
   
     <entry>
-      <title type="html">network(1)</title>
-      <link href="/network(1)" rel="alternate" type="text/html" title="network(1)" />
+      <title type="html">네트워크 기초</title>
+      <link href="/network(1)" rel="alternate" type="text/html" title="네트워크 기초" />
       <published>2020-12-13T00:00:00+09:00</published>
       <updated>2020-12-13T00:00:00+09:00</updated>
       <id>/network(1)</id>
@@ -513,8 +511,8 @@ C 클래스 -&amp;gt; 254개 호스트&lt;/p&gt;
     </entry>
   
     <entry>
-      <title type="html">network(2)</title>
-      <link href="/network(2)" rel="alternate" type="text/html" title="network(2)" />
+      <title type="html">주요 프로토콜과 기능</title>
+      <link href="/network(2)" rel="alternate" type="text/html" title="주요 프로토콜과 기능" />
       <published>2020-12-13T00:00:00+09:00</published>
       <updated>2020-12-13T00:00:00+09:00</updated>
       <id>/network(2)</id>
@@ -718,11 +716,11 @@ C 클래스 -&amp;gt; 254개 호스트&lt;/p&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td&gt;tcp flags&lt;/td&gt;
-        &lt;td&gt;U : URG : 긴급한 데이터가 있을 경우                                                  A : ACK : 데이터 수신 확인                                                                  P : PSH : 보내는 데이터를 버퍼에 저장하지 않고 바로 전달                             R : RST : 연결을 끊거나 재수립 요청                                                                 S : SYN  : 연결 수립할때 사용                                                               F : FIN : 연결 종료할때 사용&lt;/td&gt;
+        &lt;td&gt;U/  A/   P/   R/   S/    F&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td&gt;window size&lt;/td&gt;
-        &lt;td&gt;호스트가 수신 할 수 있는 버퍼(패킷을 받는 저장공간) 크기                   - sliding window : 두 개의 네트워크 호스트간의 패킷의 흐름을 제어하기 위한 방법&lt;/td&gt;
+        &lt;td&gt;호스트가 수신 할 수 있는 버퍼(패킷을 받는 저장공간) 크기      - sliding window : 두 개의 네트워크 호스트간의 패킷의 흐름을 제어하기 위한 방법&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td&gt;checksum&lt;/td&gt;
@@ -734,6 +732,20 @@ C 클래스 -&amp;gt; 254개 호스트&lt;/p&gt;
       &lt;/tr&gt;
     &lt;/tbody&gt;
   &lt;/table&gt;
+
+  &lt;p&gt;※ TCP flag&lt;/p&gt;
+
+  &lt;p&gt;U : URG : 긴급한 데이터가 있을 경우&lt;/p&gt;
+
+  &lt;p&gt;A : ACK : 데이터 수신 확인&lt;/p&gt;
+
+  &lt;p&gt;P : PSH : 보내는 데이터를 버퍼에 저장하지 않고 바로 전달&lt;/p&gt;
+
+  &lt;p&gt;R : RST : 연결을 끊거나 재수립 요청&lt;/p&gt;
+
+  &lt;p&gt;S : SYN  : 연결 수립할때 사용&lt;/p&gt;
+
+  &lt;p&gt;F : FIN : 연결 종료할때 사용&lt;/p&gt;
 
   &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;seq ,ack 의 통신방법
 1. 보내는 쪽은 임의의 숫자를 지정하여 자신의 seq를 생성
@@ -928,8 +940,8 @@ C 클래스 -&amp;gt; 254개 호스트&lt;/p&gt;
     </entry>
   
     <entry>
-      <title type="html">network basic command</title>
-      <link href="/network-basic-command" rel="alternate" type="text/html" title="network basic command" />
+      <title type="html">window 네트워크 기본 명령어</title>
+      <link href="/network-basic-command" rel="alternate" type="text/html" title="window 네트워크 기본 명령어" />
       <published>2020-12-13T00:00:00+09:00</published>
       <updated>2020-12-13T00:00:00+09:00</updated>
       <id>/network%20basic%20command</id>

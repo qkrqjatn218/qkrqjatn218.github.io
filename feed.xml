@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-01-22T17:10:08+09:00</updated><id>/</id><title type="html">Oaktree_lab</title><subtitle>review and share</subtitle><entry><title type="html">자료구조의 개요</title><link href="/data-structure" rel="alternate" type="text/html" title="자료구조의 개요" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>/data%20structure</id><content type="html" xml:base="/data-structure">&lt;h1 id=&quot;자료구조의-개요&quot;&gt;자료구조의 개요&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-01-22T17:35:03+09:00</updated><id>/</id><title type="html">Oaktree_lab</title><subtitle>review and share</subtitle><entry><title type="html">자료구조의 개요</title><link href="/data-structure" rel="alternate" type="text/html" title="자료구조의 개요" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>/data%20structure</id><content type="html" xml:base="/data-structure">&lt;h1 id=&quot;자료구조의-개요&quot;&gt;자료구조의 개요&lt;/h1&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;자료구조(data structure)&lt;/p&gt;
@@ -114,7 +114,7 @@ python은 리스트를 지원(라이브러리를 통해 배열사용가능)
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;지수식 y = 2^x
 로그식 y = log2 (x)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>qkrqjatn218</name></author><category term="C" /><category term="programming" /><summary type="html">자료구조의 개요</summary></entry><entry><title type="html">network(2)</title><link href="/network(2)" rel="alternate" type="text/html" title="network(2)" /><published>2020-12-13T00:00:00+09:00</published><updated>2020-12-13T00:00:00+09:00</updated><id>/network(2)</id><content type="html" xml:base="/network(2)">&lt;p&gt;&lt;strong&gt;#IP&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>qkrqjatn218</name></author><category term="programming" /><summary type="html">자료구조의 개요</summary></entry><entry><title type="html">주요 프로토콜과 기능</title><link href="/network(2)" rel="alternate" type="text/html" title="주요 프로토콜과 기능" /><published>2020-12-13T00:00:00+09:00</published><updated>2020-12-13T00:00:00+09:00</updated><id>/network(2)</id><content type="html" xml:base="/network(2)">&lt;p&gt;&lt;strong&gt;#IP&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;VLSM(variable length subnet mask)&lt;/li&gt;
@@ -314,11 +314,11 @@ python은 리스트를 지원(라이브러리를 통해 배열사용가능)
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td&gt;tcp flags&lt;/td&gt;
-        &lt;td&gt;U : URG : 긴급한 데이터가 있을 경우                                                  A : ACK : 데이터 수신 확인                                                                  P : PSH : 보내는 데이터를 버퍼에 저장하지 않고 바로 전달                             R : RST : 연결을 끊거나 재수립 요청                                                                 S : SYN  : 연결 수립할때 사용                                                               F : FIN : 연결 종료할때 사용&lt;/td&gt;
+        &lt;td&gt;U/  A/   P/   R/   S/    F&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td&gt;window size&lt;/td&gt;
-        &lt;td&gt;호스트가 수신 할 수 있는 버퍼(패킷을 받는 저장공간) 크기                   - sliding window : 두 개의 네트워크 호스트간의 패킷의 흐름을 제어하기 위한 방법&lt;/td&gt;
+        &lt;td&gt;호스트가 수신 할 수 있는 버퍼(패킷을 받는 저장공간) 크기      - sliding window : 두 개의 네트워크 호스트간의 패킷의 흐름을 제어하기 위한 방법&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td&gt;checksum&lt;/td&gt;
@@ -330,6 +330,20 @@ python은 리스트를 지원(라이브러리를 통해 배열사용가능)
       &lt;/tr&gt;
     &lt;/tbody&gt;
   &lt;/table&gt;
+
+  &lt;p&gt;※ TCP flag&lt;/p&gt;
+
+  &lt;p&gt;U : URG : 긴급한 데이터가 있을 경우&lt;/p&gt;
+
+  &lt;p&gt;A : ACK : 데이터 수신 확인&lt;/p&gt;
+
+  &lt;p&gt;P : PSH : 보내는 데이터를 버퍼에 저장하지 않고 바로 전달&lt;/p&gt;
+
+  &lt;p&gt;R : RST : 연결을 끊거나 재수립 요청&lt;/p&gt;
+
+  &lt;p&gt;S : SYN  : 연결 수립할때 사용&lt;/p&gt;
+
+  &lt;p&gt;F : FIN : 연결 종료할때 사용&lt;/p&gt;
 
   &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;seq ,ack 의 통신방법
 1. 보내는 쪽은 임의의 숫자를 지정하여 자신의 seq를 생성
@@ -495,7 +509,7 @@ python은 리스트를 지원(라이브러리를 통해 배열사용가능)
   &lt;p&gt;인터넷에 연결한 컴퓨터가 멀티캐스트 그룹을 주위의 라우터에 알릴 수 있는 수단을 제공하는 프로토콜&lt;/p&gt;
 
   &lt;p&gt;GMP는 멀티캐스트 라우터가 주기적으로 서브넷 호스트 컴퓨터 그룹에 IGMP 쿼리 메시지를 전송하고&lt;strong&gt;,&lt;/strong&gt; 호스트 컴퓨터는 IGMP 쿼리 메시지에 응답하며&lt;strong&gt;,&lt;/strong&gt; 자신이 가입하려는 그룹 주소 정보를 IGMP 리포트 메시지를 이용하여 라우터에 알려주는 방식으로 동작한다&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>qkrqjatn218</name></author><category term="network" /><summary type="html">#IP</summary></entry><entry><title type="html">network(1)</title><link href="/network(1)" rel="alternate" type="text/html" title="network(1)" /><published>2020-12-13T00:00:00+09:00</published><updated>2020-12-13T00:00:00+09:00</updated><id>/network(1)</id><content type="html" xml:base="/network(1)">&lt;p&gt;&lt;strong&gt;#무선 통신&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>qkrqjatn218</name></author><category term="network" /><summary type="html">#IP</summary></entry><entry><title type="html">네트워크 기초</title><link href="/network(1)" rel="alternate" type="text/html" title="네트워크 기초" /><published>2020-12-13T00:00:00+09:00</published><updated>2020-12-13T00:00:00+09:00</updated><id>/network(1)</id><content type="html" xml:base="/network(1)">&lt;p&gt;&lt;strong&gt;#무선 통신&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;무선 LAN&lt;/p&gt;
 
@@ -790,7 +804,7 @@ C 클래스 -&amp;gt; 254개 호스트&lt;/p&gt;
                 248         /29
                 252      /30
                 254       /31
-                255       /32&lt;/p&gt;</content><author><name>qkrqjatn218</name></author><category term="network" /><summary type="html">#무선 통신</summary></entry><entry><title type="html">network basic command</title><link href="/network-basic-command" rel="alternate" type="text/html" title="network basic command" /><published>2020-12-13T00:00:00+09:00</published><updated>2020-12-13T00:00:00+09:00</updated><id>/network%20basic%20command</id><content type="html" xml:base="/network-basic-command">&lt;p&gt;&lt;strong&gt;#네트워크 명령어&lt;/strong&gt;&lt;/p&gt;
+                255       /32&lt;/p&gt;</content><author><name>qkrqjatn218</name></author><category term="network" /><summary type="html">#무선 통신</summary></entry><entry><title type="html">window 네트워크 기본 명령어</title><link href="/network-basic-command" rel="alternate" type="text/html" title="window 네트워크 기본 명령어" /><published>2020-12-13T00:00:00+09:00</published><updated>2020-12-13T00:00:00+09:00</updated><id>/network%20basic%20command</id><content type="html" xml:base="/network-basic-command">&lt;p&gt;&lt;strong&gt;#네트워크 명령어&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;

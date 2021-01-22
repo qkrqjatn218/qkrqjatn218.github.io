@@ -11,7 +11,7 @@
 
 
 
-    <title>network(2)</title>
+    <title>주요 프로토콜과 기능</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -42,7 +42,7 @@
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Oaktree_lab" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="network(2)" />
+    <meta property="og:title" content="주요 프로토콜과 기능" />
     <meta property="og:description" content="#IP VLSM(variable length subnet mask) 각 서브넷(Sub-Network) 마다 가변 길이의 서브네트 마스크를 적용하는 기법 각 서브넷이 각기 다른 크기(호스트 수 또는 주소 배정 수)를 갖을 수 있음 Classful Addressing 처럼 고정 길이의 서브네트 마스크를 적용하지 않고, 호스트 수가 적은 네트워크에는 긴 마스크, 그 반대에는 짧은 마스크 적용 등 . 동일" />
     <meta property="og:url" content="/network(2)" />
     <meta property="og:image" content="/assets/images/network-1.jpg" />
@@ -52,7 +52,7 @@
     <meta property="article:modified_time" content="2020-12-13T00:00:00+09:00" />
     <meta property="article:tag" content="Network" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="network(2)" />
+    <meta name="twitter:title" content="주요 프로토콜과 기능" />
     <meta name="twitter:description" content="#IP VLSM(variable length subnet mask) 각 서브넷(Sub-Network) 마다 가변 길이의 서브네트 마스크를 적용하는 기법 각 서브넷이 각기 다른 크기(호스트 수 또는 주소 배정 수)를 갖을 수 있음 Classful Addressing 처럼 고정 길이의 서브네트 마스크를 적용하지 않고, 호스트 수가 적은 네트워크에는 긴 마스크, 그 반대에는 짧은 마스크 적용 등 . 동일" />
     <meta name="twitter:url" content="/" />
     <meta name="twitter:image" content="/assets/images/network-1.jpg" />
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="network(2)" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="주요 프로토콜과 기능" href="/feed.xml" />
 
 
 </head>
@@ -129,7 +129,7 @@ into the {body} of the default.hbs template -->
     <li class="nav-linux" role="menuitem"><a href="/tag/linux/">linux</a></li>
     <li class="nav-network" role="menuitem"><a href="/tag/network/">network</a></li>
     <li class="nav-issue" role="menuitem"><a href="/tag/issue/">issue</a></li>
-    <li class="nav-C programming" role="menuitem"><a href="/tag/C programming/">C programming</a></li>
+    <li class="nav-C programming" role="menuitem"><a href="/tag/programming/">programming</a></li>
     <li class="nav-python" role="menuitem"><a href="/tag/python/">python</a></li>
 </ul>
 
@@ -169,7 +169,7 @@ into the {body} of the default.hbs template -->
                         
                     
                 </section>
-                <h1 class="post-full-title">network(2)</h1>
+                <h1 class="post-full-title">주요 프로토콜과 기능</h1>
             </header>
 
             
@@ -379,11 +379,11 @@ into the {body} of the default.hbs template -->
       </tr>
       <tr>
         <td>tcp flags</td>
-        <td>U : URG : 긴급한 데이터가 있을 경우                                                  A : ACK : 데이터 수신 확인                                                                  P : PSH : 보내는 데이터를 버퍼에 저장하지 않고 바로 전달                             R : RST : 연결을 끊거나 재수립 요청                                                                 S : SYN  : 연결 수립할때 사용                                                               F : FIN : 연결 종료할때 사용</td>
+        <td>U/  A/   P/   R/   S/    F</td>
       </tr>
       <tr>
         <td>window size</td>
-        <td>호스트가 수신 할 수 있는 버퍼(패킷을 받는 저장공간) 크기                   - sliding window : 두 개의 네트워크 호스트간의 패킷의 흐름을 제어하기 위한 방법</td>
+        <td>호스트가 수신 할 수 있는 버퍼(패킷을 받는 저장공간) 크기      - sliding window : 두 개의 네트워크 호스트간의 패킷의 흐름을 제어하기 위한 방법</td>
       </tr>
       <tr>
         <td>checksum</td>
@@ -395,6 +395,20 @@ into the {body} of the default.hbs template -->
       </tr>
     </tbody>
   </table>
+
+  <p>※ TCP flag</p>
+
+  <p>U : URG : 긴급한 데이터가 있을 경우</p>
+
+  <p>A : ACK : 데이터 수신 확인</p>
+
+  <p>P : PSH : 보내는 데이터를 버퍼에 저장하지 않고 바로 전달</p>
+
+  <p>R : RST : 연결을 끊거나 재수립 요청</p>
+
+  <p>S : SYN  : 연결 수립할때 사용</p>
+
+  <p>F : FIN : 연결 종료할때 사용</p>
 
   <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>seq ,ack 의 통신방법
 1. 보내는 쪽은 임의의 숫자를 지정하여 자신의 seq를 생성
@@ -654,7 +668,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/network(1)">network(1)</a></li>
+                                            <li><a href="/network(1)">네트워크 기초</a></li>
                                         
                                     
                                   
@@ -663,7 +677,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/network-basic-command">network basic command</a></li>
+                                            <li><a href="/network-basic-command">window 네트워크 기본 명령어</a></li>
                                         
                                     
                                   
@@ -697,10 +711,6 @@ into the {body} of the default.hbs template -->
             <a class="post-card-content-link" href="/data-structure">
                 <header class="post-card-header">
                     
-                        
-                            
-                               <span class="post-card-tags">C</span>
-                            
                         
                             
                                 <span class="post-card-tags">Programming</span>
@@ -760,7 +770,7 @@ into the {body} of the default.hbs template -->
                         
                     
 
-                    <h2 class="post-card-title">network(1)</h2>
+                    <h2 class="post-card-title">네트워크 기초</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -806,13 +816,13 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">network(2)</div>
+    <div class="floating-header-title">주요 프로토콜과 기능</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=network%282%29&amp;url=https://qkrqjatn218.github.ionetwork(2)"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EC%A3%BC%EC%9A%94+%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EA%B3%BC+%EA%B8%B0%EB%8A%A5&amp;url=https://qkrqjatn218.github.ionetwork(2)"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
