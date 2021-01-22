@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="/author/qkrqjatn218/feed.xml" rel="self" type="application/atom+xml" />
   <link href="/" rel="alternate" type="text/html" />
-  <updated>2020-12-28T21:19:28+09:00</updated>
+  <updated>2021-01-22T17:10:08+09:00</updated>
   <id>/author/qkrqjatn218/feed.xml</id>
 
   
@@ -32,263 +32,128 @@
 
   
     <entry>
-      <title type="html">network basic command</title>
-      <link href="/network-basic-command" rel="alternate" type="text/html" title="network basic command" />
-      <published>2020-12-13T00:00:00+09:00</published>
-      <updated>2020-12-13T00:00:00+09:00</updated>
-      <id>/network%20basic%20command</id>
-      <content type="html" xml:base="/network-basic-command">&lt;p&gt;&lt;strong&gt;#네트워크 명령어&lt;/strong&gt;&lt;/p&gt;
+      <title type="html">자료구조의 개요</title>
+      <link href="/data-structure" rel="alternate" type="text/html" title="자료구조의 개요" />
+      <published>2021-01-22T00:00:00+09:00</published>
+      <updated>2021-01-22T00:00:00+09:00</updated>
+      <id>/data%20structure</id>
+      <content type="html" xml:base="/data-structure">&lt;h1 id=&quot;자료구조의-개요&quot;&gt;자료구조의 개요&lt;/h1&gt;
 
-&lt;ol&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;자료구조(data structure)&lt;/p&gt;
+
+  &lt;p&gt;거대한 데이터를 효율적이고 빠르게 처리하기 위한 구조&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;책 한권을 찾으려면 지정한 위치에 놓는다&lt;/p&gt;
+
+&lt;p&gt;책 100권 중 한권을 찾으려면 &lt;strong&gt;책장&lt;/strong&gt;에 두고 찾는다&lt;/p&gt;
+
+&lt;p&gt;책 1000권 중 한권을 찾으려면 &lt;strong&gt;여러 책장&lt;/strong&gt;에 두고 &lt;strong&gt;순서&lt;/strong&gt;와 &lt;strong&gt;위치&lt;/strong&gt;를 지정해 두고 찾는다..&lt;/p&gt;
+
+&lt;p&gt;​                                                       ‘’’’’&lt;/p&gt;
+
+&lt;p&gt;이처럼 적은 양의 데이터는 찾기 쉽지만 많은 양의 데이터는 찾기가 쉽지 않다. 그래서 &lt;strong&gt;그룹(group)&lt;/strong&gt;을 만들고 &lt;strong&gt;색인(index)&lt;/strong&gt;과 &lt;strong&gt;값(value)&lt;/strong&gt;을 지정해서 빠르게 찾을 수 있도록 한다. 여기서  배열(array)와 리스트(list)라는 개념이 고안되었다.&lt;/p&gt;
+
+&lt;p&gt;​														‘’’’’&lt;/p&gt;
+
+&lt;p&gt;배열과 리스트의 기본적인 개념과 차이에 대해 알아보자&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;___ ____ ____ ____ ____ ____
+10 | 20 | 30 | 40 | 50 | 60 | -&amp;gt; value  
+0  | 1  | 2  | 3  | 4  | 5  | -&amp;gt; index	
+int int  int  int  int  int   -&amp;gt; element(value + index); 요소는 값과 인덱스를 포함한 구조
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;배열&lt;/th&gt;
+      &lt;th&gt;리스트&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;추가&lt;/td&gt;
+      &lt;td&gt;해당인덱스 원래값에 추가한 데이터를 덮어씀&lt;/td&gt;
+      &lt;td&gt;들어가고 싶은 순서에 있는 요소들을 한칸씩 뒤로넣고 해당자리에 들어감&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;삭제&lt;/td&gt;
+      &lt;td&gt;껍데기는 있지만 값은 없어짐(비어있는 저장공간 O,인덱스 존재)&lt;/td&gt;
+      &lt;td&gt;요소가 없어지고, 그 자리에 다음 요소가 옴(비어있는 저장공간 X)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;​															‘’’’’’’&lt;/p&gt;
+
+&lt;p&gt;자료구조는 프로그래밍 언어마다 지원하는 양상이 다르다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C 언어는 리스트를 지원하지 않음
+java는 배열과 리스트를 둘 다 지원하고 리스트는 array list와 linked list로 나누어짐
+python은 리스트를 지원(라이브러리를 통해 배열사용가능)
+....
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;​															  “”””&lt;/p&gt;
+
+&lt;p&gt;기본적인 자료구조들&lt;/p&gt;
+
+&lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;ipconfig [네트워크 인터페이스 정보 확인]&lt;/p&gt;
+    &lt;p&gt;선형구조&lt;/p&gt;
 
-    &lt;ul&gt;
+    &lt;ol&gt;
+      &lt;li&gt;배열&lt;/li&gt;
+      &lt;li&gt;연결 리스트&lt;/li&gt;
+      &lt;li&gt;스택&lt;/li&gt;
+      &lt;li&gt;큐&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;비선형구조&lt;/p&gt;
+
+    &lt;ol&gt;
       &lt;li&gt;
-        &lt;p&gt;옵션&lt;/p&gt;
-
-        &lt;table&gt;
-          &lt;thead&gt;
-            &lt;tr&gt;
-              &lt;th&gt;형태&lt;/th&gt;
-              &lt;th&gt;의미&lt;/th&gt;
-            &lt;/tr&gt;
-          &lt;/thead&gt;
-          &lt;tbody&gt;
-            &lt;tr&gt;
-              &lt;td&gt;/all&lt;/td&gt;
-              &lt;td&gt;mac(물리적주소)주소 등&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;/release&lt;/td&gt;
-              &lt;td&gt;ip 주소 해제하여 네트워크 연결을 끊음&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-              &lt;td&gt;/renew&lt;/td&gt;
-              &lt;td&gt;ip 주소를 새롭게 갱신하여 네트워크 재연결&lt;/td&gt;
-            &lt;/tr&gt;
-          &lt;/tbody&gt;
-        &lt;/table&gt;
+        &lt;p&gt;트리(tree)&lt;/p&gt;
       &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;netstat [사용중인 port 정보 확인]&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+      &lt;li&gt;
+        &lt;p&gt;그래프(graph)&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;옵션&lt;/p&gt;
-
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;netstat -an (전체 포트 정보 표시 및 포트 번호를 숫자로 표시)
-     
-netstat -ano (+PID정보)
-     
-netstat -anb (+실행프로세스)
------------------------------------------------------------------------------
-상태
-LISTENING : 대기상태
-ESTABLISHED : 연결됨
-TIME_WAIT : 타임아웃
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+        &lt;p&gt;​										    	“”””&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;nslookup [DNS 조회]&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;자료구조가 데이터의 표현하는 것이라고 한다면, &lt;strong&gt;알고리즘&lt;/strong&gt;은 표현된 데이터를 처리하는 것이라고 볼 수 있다.&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;방법&lt;/p&gt;
-
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nslookup
-&amp;gt; [도메인네임]             (도메인네임에 해당하는 ip주소 출력)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;ping [상대방 호스트와 연결 상태를 확인하기 위해 사용, icmp 프로토콜 사용]&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;방법&lt;/p&gt;
-
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ping [host ip주소]
------------------------------------------------------------------------------
-TTL(time to live) =128(윈도우)
-TTL(time to live) =64(대체로 리눅스,안드로이드)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;tracert [해당 ip주소로 가는 경로 추적,icmp 프로토롤 사용]&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;방법&lt;/p&gt;
-
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tracert [ip주소]
-&amp;gt; 경로 출력
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;arp [adress resolution protocol, ip주소를 mac 주소를 매칭]&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;방법(근거리에서는 mac주소로 통신, 원거리에서는 ip주소로 통신)&lt;/p&gt;
-
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;arp -a			(ip주소와 매칭되는 mac주소 캐쉬 확인)
-arp -d			(캐쉬가 삭제됨)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;route print [라우팅 테이블 확인]&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;방법(라우팅 테이블에는 최적의 경로에 대한 정보를 가지고 있음)&lt;/p&gt;
-
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;route print
------------------------------------------------------------------------------
-네트워크 대상: 목표지점
-인터페이스: 시작지점
-메트릭: 숫자가 클수록 우선순위가 우위, 경로 지정시 필요
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;hostname [호스트 이[름 확인]&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;net user [사용자계정 확인]&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;#네트워크 형태&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&quot;알고리즘의-개요&quot;&gt;알고리즘의 개요&lt;/h1&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;LAN(lan area network)&lt;/p&gt;
+  &lt;p&gt;algorithm&lt;/p&gt;
 
-  &lt;p&gt;WAN(wide area network)&lt;/p&gt;
-
-  &lt;p&gt;CAN(campus area network)&lt;/p&gt;
+  &lt;p&gt;어떠한 문제해결을 위해 여러 방법들을 모색하고 결과를 도출하는 것&lt;/p&gt;
 &lt;/blockquote&gt;
+
+&lt;p&gt;알고리즘은 궁극저으로, 문제의 해결을 기계로 실행하기 위한 것이다&lt;/p&gt;
+
+&lt;p&gt;알고리즘의 특징은 다음과 같다&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;intranet(사설네트워크)&lt;/p&gt;
-
-    &lt;p&gt;-VPN(virtual private network) : 여러 곳에 퍼져있는 컴퓨터들을 잇는 사설 네트워크를 만들 때, 일일이 전선으로 연결하기는 돈이 많이 들고 물리적으로 보안에 취약하므로, 그 대신 인터넷 네트워크와 암호화 기술을 이용하여 통신 시스템을 구축하는 것을 말한다&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;입력은 0이상으로 없을수도 있다, 하지만 출력은 반드시 하나 이상 생성되어야한다&lt;/li&gt;
+  &lt;li&gt;유한성(finitenss): 여러작업은 반드시 유한한 시간내에 종료되어야 된다&lt;/li&gt;
+  &lt;li&gt;명확성(definiteness): 각 단계는 명확해야 하며, 모호하지 말아야 한다&lt;/li&gt;
+  &lt;li&gt;유효성(effectiveness): 모든 명령은 실행가능 해야 함&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;#네트워크 접속장치&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;효율적인 데이터의 처리를 위해선 알고리즘에 성능또한 중요하다. 성능을 분석하려면 기본적으로 수학적 배경지식을 필요로 한다&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;LAN 카드(NIC카드) [외부 네트워크와 빠른 속도로 데이터를 송수신할 수 있게 컴퓨터 내에 설치하는 확장 카드를 말한다]
-    &lt;ul&gt;
-      &lt;li&gt;각 LAN 카드에는 주민등록번호처럼 고유의 식별코드가 있다. 이렇게 LAN 카드에 할당된48비트 물리적 주소를 MAC 주소(Media Access Control Address)라고 한다&lt;/li&gt;
-      &lt;li&gt;MAC 주소중 OUI(앞의 24비트)는 LAN 칩셋 제조사를 의미하는 고유 코드고, 뒤의 24비트는 제품의 일련번호와 같이 부여되는 것이므로 전 세계에서 유일한 내 컴퓨터만의 LAN 카드 고유 번호가 된다&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;허브(HUB)  [여러 대의 컴퓨터를 손쉽게 연결하는 장치]
-    &lt;ul&gt;
-      &lt;li&gt;한 포트에서 수신된 신호들은 허브의 다른 모든 포트로 즉시 재전송되며, 모든 입력과 출력은 서로 연결되어 있어 여러 개의 노드가 똑같은 중계기를 공유할 수 있도록 해준다&lt;/li&gt;
-      &lt;li&gt;단순히 전기적 신호를 복제해 여러 곳으로 전송하기 때문에 데이터 속도를 느리게 하고, 보안에도 취약함, 데어터 송수신이 동시에 안됌, 현재는 사용하지 않음&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;스위치(Switch) [컴퓨터에 할당되는 대역폭을 극대화시켜주는 장치]
-    &lt;ul&gt;
-      &lt;li&gt;허브와 동일한 방식으로 작동하지만 수신하는 데이터의 의도한 대상을 식별할 수 있으므로 데이터를 수신하기로 되어 있는 컴퓨터에만 해당 데이터를 보낸다. 또한 스위치는 데이터를 동시에 송수신할 수 있으므로 허브보다 빠른 속도로 데이터를 보낼 수 있다&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;브릿지(Bridge) [두 개 이상의 근거리 통신망을 연결하여 하나의 네트워크로 만들어 주는 장치]
-    &lt;ul&gt;
-      &lt;li&gt;근거리 통신망에서 하나의 장치가 데이터를 송신할 때 다른 장치도 데이터를 송신하면 충돌이 발생한다. 이처럼 네트워크에 노드 수가 늘어나면 충돌이 발생할 확률이 높고 통신속도도 떨어지는데, 브리지를 이용하면 문제를 해결할 수 있다&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;게이트웨이(게이트웨이 주소와 다름) [종류가 다른 두 개 이상의 네트워크를 상호 접속하여 정보를 주고받을 수 있는 장치다]
-    &lt;ul&gt;
-      &lt;li&gt;브리지와 달리 서로 다른 프로토콜 통신망 간에도 프로토콜을 변환하여 정보를 주고받을 수 있다&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;중계기(Repeater)
-    &lt;ul&gt;
-      &lt;li&gt;접속 시스템의 수를 증가시키거나 네트워크 전송 거리를 연장하려고 사용하는 장치로, 네트워크에서 신호를 수신하여 증폭한 후 다음 구간으로 재전송하는 역할을 한다&lt;/li&gt;
-      &lt;li&gt;장거리로 전송하면 신호가 약해지거나 감쇠되는데, 중계기는 노드 사이의 케이블에서 신호를 증폭시켜 이문제를 해결한다. 중계기는 신호를 증폭시키기만 할 뿐 데이터 내용은 변경하지 않으며, 근거리 통신망을 구성하는 세그먼트들을 확장하거나 서로 연결하는 데 주로 사용한다&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;라우터(Router) [서로 구조가 다른 망을 연결할 수 있어 근거리 통신망(LAN)과 대도시 통신망(MAN), 광대역 통신망(WAN)을 연결하는 데 사용]
-    &lt;ul&gt;
-      &lt;li&gt;IP 주소를 바탕으로 데이터가 수신지까지 갈수 있는 경로를 검사하여 효율적인 경로를 선택하는 라우팅 기능도 수행한다&lt;/li&gt;
-      &lt;li&gt;라우팅은 라우터에 있는 라우팅 테이블이 결정하는데, 라우팅테이블은 인터넷상에서 수신지의 주소를 토대로 경로상의 다음 주소를 결정한다&lt;/li&gt;
-      &lt;li&gt;라우터를 사용하면 서로 다른 네트워크(홈 네트워크와 인터넷) 간에 데이터를 전송할 수 있다. 라우터에는 이더넷 케이블을 사용한 유선 라우터와 무선 라우터가 있다&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;#네트워크 접속형태&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;성형(star형)&lt;/p&gt;
-
-  &lt;p&gt;링형(Ring)&lt;/p&gt;
-
-  &lt;p&gt;버스형(Bus)&lt;/p&gt;
-
-  &lt;p&gt;트리형(Tree)&lt;/p&gt;
-
-  &lt;p&gt;그물형(Mesh topology)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;#네트워크 전송매체&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;유선 전송매체(동축케이블, 꼬임선, 광섬유케이블)&lt;/p&gt;
-
-  &lt;p&gt;무선 전송매체(라디오파, 지상 마이크로파, 위성 마이크로파)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;#통신방식&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;다른컴퓨터에 데이터 전송 서비스를 제공하는 컴퓨터를 ‘서버’라 하고, 서버에서 보내주는 데이터 서비스를 수신하는 컴퓨터를 ‘클라이언트’라고 한다&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;유니캐스트 1:1 통신 (서버와 클라이언트간에)&lt;/li&gt;
-  &lt;li&gt;멀티캐스트 1:다수 통신 224.0.0.0 ~ 239.255.255.255&lt;/li&gt;
-  &lt;li&gt;브로드캐스트 1:모두 통신 FF:FF:FF:FF:FF:FF&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;#근거리통신&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;csma/cd(carrier sense multiple access with collision detection)
-    &lt;ul&gt;
-      &lt;li&gt;CSMA/CD(반송파 감지 다중 접근/충돌 검출) 방식은 버스형 통신망으로 알려진 이더넷에 주로 사용한다&lt;/li&gt;
-      &lt;li&gt;CSMA/CD 방식은 데이터를 송신하기 전에 반송파 여부를 감지하는데,반송파가 감지되면 다른 컴퓨터(스테이션)에서 데이터 송신 중임을 판단하여 데이터를 전송하지 않는다&lt;/li&gt;
-      &lt;li&gt;하지만 반송파가 감지되지 않으면 컴퓨터가 전송매체를 사용하지 않는 것으로 판단하여 데이터 를 전송한다&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content>
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;지수식 y = 2^x
+로그식 y = log2 (x)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
 
       
       
@@ -305,11 +170,13 @@ arp -d			(캐쉬가 삭제됨)
       
 
       
-        <category term="network" />
+        <category term="C" />
+      
+        <category term="programming" />
       
 
       
-        <summary type="html">#네트워크 명령어</summary>
+        <summary type="html">자료구조의 개요</summary>
       
 
       
@@ -577,38 +444,37 @@ netbios : 137~139 (udp)  IMAP(메일관련 프로토콜) : 143   SMB : 445
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;서브넷팅
+&lt;p&gt;```
+서브넷팅&lt;/p&gt;
 
-예 : 30개 pc를 사용하는 강의장에 ip 할당
+&lt;p&gt;예 : 30개 pc를 사용하는 강의장에 ip 할당&lt;/p&gt;
 
-A클래스 -&amp;gt; 1677만 호스트
-C 클래스 -&amp;gt; 254개 호스트
+&lt;p&gt;A클래스 -&amp;gt; 1677만 호스트
+C 클래스 -&amp;gt; 254개 호스트&lt;/p&gt;
 
-기존 클래스 방식은 비효율적
+&lt;p&gt;기존 클래스 방식은 비효율적&lt;/p&gt;
 
-서브넷팅을 통하여 ip를 절약!!!
+&lt;p&gt;서브넷팅을 통하여 ip를 절약!!!&lt;/p&gt;
 
-서브넷팅 : 네트워크를 반복적으로 1/2으로 분할해서 구함
+&lt;p&gt;서브넷팅 : 네트워크를 반복적으로 1/2으로 분할해서 구함&lt;/p&gt;
 
-------------------------------------------------------------------------------
-Prefix 표기법
+&lt;hr /&gt;
+&lt;p&gt;Prefix 표기법&lt;/p&gt;
 
-255.255.255.0          /24
-11111111.11111111.11111111.00000000
+&lt;p&gt;255.255.255.0          /24
+11111111.11111111.11111111.00000000&lt;/p&gt;
 
-255.255.0.0               /16
-11111111.11111111.00000000.00000000
+&lt;p&gt;255.255.0.0               /16
+11111111.11111111.00000000.00000000&lt;/p&gt;
 
-255.0.0.0            /8
-11111111.00000000.00000000.00000000
+&lt;p&gt;255.0.0.0            /8
+11111111.00000000.00000000.00000000&lt;/p&gt;
 
-
-255.255.255.0          /24
+&lt;p&gt;255.255.255.0          /24
 11111111.11111111.11111111.11100000
-퀴즈
+퀴즈&lt;/p&gt;
 
-
-255.255.252.0           /22
+&lt;p&gt;255.255.252.0           /22
 255.255.254.0          /23
 255.255.255.0          /24
 255.255.255.128   -&amp;gt;   /25
@@ -618,49 +484,7 @@ Prefix 표기법
                 248         /29
                 252      /30
                 254       /31
-                255       /32
-
------------------------------------------------
-
-CIDR 
-IP 주소 재할당방법
-
-CIDR = 서브넷팅 + 슈퍼넷팅 + Prefix
-
-------------------------------------------------
-
-실습 - 서브넷팅
-
-211.100.10.0 ~ 211.100.10.255의 C클래스 네트워크를 네트워크당 60개의 ip를 사용가능하도록 서브넷팅 하시오.
-
-1) 서브넷마스크는? 255.255.255.192
-
-서브넷 4개서술
-211.100.10.0/26 (211.100.10.0 ~ 211.100.10.63)
-211.100.10.64/26(211.100.10.64 ~ 211.100.10.127)
-211.100.10.128/26(211.100.10.128 ~ 211.100.10.191)
-211.100.10.192/26(211.100.10.192~ 211.100.10.255)
-
-2) 서브넷의 개수는 4개의 서브넷
-3) 네트워크당 ip 의 개수 : 64 -2  실제사용가능한건 62개
-4) 첫번째 서브넷의 브로드캐스트 주소는? 211.100.10.63
-5) 두번째 서브넷의 사용가능한 ip 범위는?
-211.100.10.65 ~ 211.100.10.126
-
-255.255.224.0/19
-11111111.11111111.11100000.0
-
-8192
-256*32
-.0.0 ~ .32.0 8192
-.33.0 ~ .64.0 8192
-.65.0 ~ .96.0 8192
-.97.0 ~ .128.0 8192
-129.0 ~ .160.0 
-161.0 ~ .192.0
-193.0 ~ .224.0
-225.0 ~ .255.0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+                255       /32&lt;/p&gt;</content>
 
       
       
@@ -1097,6 +921,291 @@ CIDR = 서브넷팅 + 슈퍼넷팅 + Prefix
 
       
         <summary type="html">#IP</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">network basic command</title>
+      <link href="/network-basic-command" rel="alternate" type="text/html" title="network basic command" />
+      <published>2020-12-13T00:00:00+09:00</published>
+      <updated>2020-12-13T00:00:00+09:00</updated>
+      <id>/network%20basic%20command</id>
+      <content type="html" xml:base="/network-basic-command">&lt;p&gt;&lt;strong&gt;#네트워크 명령어&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;ipconfig [네트워크 인터페이스 정보 확인]&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;옵션&lt;/p&gt;
+
+        &lt;table&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;
+              &lt;th&gt;형태&lt;/th&gt;
+              &lt;th&gt;의미&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;td&gt;/all&lt;/td&gt;
+              &lt;td&gt;mac(물리적주소)주소 등&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;td&gt;/release&lt;/td&gt;
+              &lt;td&gt;ip 주소 해제하여 네트워크 연결을 끊음&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;td&gt;/renew&lt;/td&gt;
+              &lt;td&gt;ip 주소를 새롭게 갱신하여 네트워크 재연결&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;netstat [사용중인 port 정보 확인]&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;옵션&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;netstat -an (전체 포트 정보 표시 및 포트 번호를 숫자로 표시)
+     
+netstat -ano (+PID정보)
+     
+netstat -anb (+실행프로세스)
+-----------------------------------------------------------------------------
+상태
+LISTENING : 대기상태
+ESTABLISHED : 연결됨
+TIME_WAIT : 타임아웃
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;nslookup [DNS 조회]&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;방법&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nslookup
+&amp;gt; [도메인네임]             (도메인네임에 해당하는 ip주소 출력)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;ping [상대방 호스트와 연결 상태를 확인하기 위해 사용, icmp 프로토콜 사용]&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;방법&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ping [host ip주소]
+-----------------------------------------------------------------------------
+TTL(time to live) =128(윈도우)
+TTL(time to live) =64(대체로 리눅스,안드로이드)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;tracert [해당 ip주소로 가는 경로 추적,icmp 프로토롤 사용]&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;방법&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tracert [ip주소]
+&amp;gt; 경로 출력
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;arp [adress resolution protocol, ip주소를 mac 주소를 매칭]&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;방법(근거리에서는 mac주소로 통신, 원거리에서는 ip주소로 통신)&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;arp -a			(ip주소와 매칭되는 mac주소 캐쉬 확인)
+arp -d			(캐쉬가 삭제됨)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;route print [라우팅 테이블 확인]&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;방법(라우팅 테이블에는 최적의 경로에 대한 정보를 가지고 있음)&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;route print
+-----------------------------------------------------------------------------
+네트워크 대상: 목표지점
+인터페이스: 시작지점
+메트릭: 숫자가 클수록 우선순위가 우위, 경로 지정시 필요
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;hostname [호스트 이[름 확인]&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;net user [사용자계정 확인]&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;#네트워크 형태&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;LAN(lan area network)&lt;/p&gt;
+
+  &lt;p&gt;WAN(wide area network)&lt;/p&gt;
+
+  &lt;p&gt;CAN(campus area network)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;intranet(사설네트워크)&lt;/p&gt;
+
+    &lt;p&gt;-VPN(virtual private network) : 여러 곳에 퍼져있는 컴퓨터들을 잇는 사설 네트워크를 만들 때, 일일이 전선으로 연결하기는 돈이 많이 들고 물리적으로 보안에 취약하므로, 그 대신 인터넷 네트워크와 암호화 기술을 이용하여 통신 시스템을 구축하는 것을 말한다&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;#네트워크 접속장치&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;LAN 카드(NIC카드) [외부 네트워크와 빠른 속도로 데이터를 송수신할 수 있게 컴퓨터 내에 설치하는 확장 카드를 말한다]
+    &lt;ul&gt;
+      &lt;li&gt;각 LAN 카드에는 주민등록번호처럼 고유의 식별코드가 있다. 이렇게 LAN 카드에 할당된48비트 물리적 주소를 MAC 주소(Media Access Control Address)라고 한다&lt;/li&gt;
+      &lt;li&gt;MAC 주소중 OUI(앞의 24비트)는 LAN 칩셋 제조사를 의미하는 고유 코드고, 뒤의 24비트는 제품의 일련번호와 같이 부여되는 것이므로 전 세계에서 유일한 내 컴퓨터만의 LAN 카드 고유 번호가 된다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;허브(HUB)  [여러 대의 컴퓨터를 손쉽게 연결하는 장치]
+    &lt;ul&gt;
+      &lt;li&gt;한 포트에서 수신된 신호들은 허브의 다른 모든 포트로 즉시 재전송되며, 모든 입력과 출력은 서로 연결되어 있어 여러 개의 노드가 똑같은 중계기를 공유할 수 있도록 해준다&lt;/li&gt;
+      &lt;li&gt;단순히 전기적 신호를 복제해 여러 곳으로 전송하기 때문에 데이터 속도를 느리게 하고, 보안에도 취약함, 데어터 송수신이 동시에 안됌, 현재는 사용하지 않음&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;스위치(Switch) [컴퓨터에 할당되는 대역폭을 극대화시켜주는 장치]
+    &lt;ul&gt;
+      &lt;li&gt;허브와 동일한 방식으로 작동하지만 수신하는 데이터의 의도한 대상을 식별할 수 있으므로 데이터를 수신하기로 되어 있는 컴퓨터에만 해당 데이터를 보낸다. 또한 스위치는 데이터를 동시에 송수신할 수 있으므로 허브보다 빠른 속도로 데이터를 보낼 수 있다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;브릿지(Bridge) [두 개 이상의 근거리 통신망을 연결하여 하나의 네트워크로 만들어 주는 장치]
+    &lt;ul&gt;
+      &lt;li&gt;근거리 통신망에서 하나의 장치가 데이터를 송신할 때 다른 장치도 데이터를 송신하면 충돌이 발생한다. 이처럼 네트워크에 노드 수가 늘어나면 충돌이 발생할 확률이 높고 통신속도도 떨어지는데, 브리지를 이용하면 문제를 해결할 수 있다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;게이트웨이(게이트웨이 주소와 다름) [종류가 다른 두 개 이상의 네트워크를 상호 접속하여 정보를 주고받을 수 있는 장치다]
+    &lt;ul&gt;
+      &lt;li&gt;브리지와 달리 서로 다른 프로토콜 통신망 간에도 프로토콜을 변환하여 정보를 주고받을 수 있다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;중계기(Repeater)
+    &lt;ul&gt;
+      &lt;li&gt;접속 시스템의 수를 증가시키거나 네트워크 전송 거리를 연장하려고 사용하는 장치로, 네트워크에서 신호를 수신하여 증폭한 후 다음 구간으로 재전송하는 역할을 한다&lt;/li&gt;
+      &lt;li&gt;장거리로 전송하면 신호가 약해지거나 감쇠되는데, 중계기는 노드 사이의 케이블에서 신호를 증폭시켜 이문제를 해결한다. 중계기는 신호를 증폭시키기만 할 뿐 데이터 내용은 변경하지 않으며, 근거리 통신망을 구성하는 세그먼트들을 확장하거나 서로 연결하는 데 주로 사용한다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;라우터(Router) [서로 구조가 다른 망을 연결할 수 있어 근거리 통신망(LAN)과 대도시 통신망(MAN), 광대역 통신망(WAN)을 연결하는 데 사용]
+    &lt;ul&gt;
+      &lt;li&gt;IP 주소를 바탕으로 데이터가 수신지까지 갈수 있는 경로를 검사하여 효율적인 경로를 선택하는 라우팅 기능도 수행한다&lt;/li&gt;
+      &lt;li&gt;라우팅은 라우터에 있는 라우팅 테이블이 결정하는데, 라우팅테이블은 인터넷상에서 수신지의 주소를 토대로 경로상의 다음 주소를 결정한다&lt;/li&gt;
+      &lt;li&gt;라우터를 사용하면 서로 다른 네트워크(홈 네트워크와 인터넷) 간에 데이터를 전송할 수 있다. 라우터에는 이더넷 케이블을 사용한 유선 라우터와 무선 라우터가 있다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;#네트워크 접속형태&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;성형(star형)&lt;/p&gt;
+
+  &lt;p&gt;링형(Ring)&lt;/p&gt;
+
+  &lt;p&gt;버스형(Bus)&lt;/p&gt;
+
+  &lt;p&gt;트리형(Tree)&lt;/p&gt;
+
+  &lt;p&gt;그물형(Mesh topology)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;#네트워크 전송매체&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;유선 전송매체(동축케이블, 꼬임선, 광섬유케이블)&lt;/p&gt;
+
+  &lt;p&gt;무선 전송매체(라디오파, 지상 마이크로파, 위성 마이크로파)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;#통신방식&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;다른컴퓨터에 데이터 전송 서비스를 제공하는 컴퓨터를 ‘서버’라 하고, 서버에서 보내주는 데이터 서비스를 수신하는 컴퓨터를 ‘클라이언트’라고 한다&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;유니캐스트 1:1 통신 (서버와 클라이언트간에)&lt;/li&gt;
+  &lt;li&gt;멀티캐스트 1:다수 통신 224.0.0.0 ~ 239.255.255.255&lt;/li&gt;
+  &lt;li&gt;브로드캐스트 1:모두 통신 FF:FF:FF:FF:FF:FF&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;#근거리통신&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;csma/cd(carrier sense multiple access with collision detection)
+    &lt;ul&gt;
+      &lt;li&gt;CSMA/CD(반송파 감지 다중 접근/충돌 검출) 방식은 버스형 통신망으로 알려진 이더넷에 주로 사용한다&lt;/li&gt;
+      &lt;li&gt;CSMA/CD 방식은 데이터를 송신하기 전에 반송파 여부를 감지하는데,반송파가 감지되면 다른 컴퓨터(스테이션)에서 데이터 송신 중임을 판단하여 데이터를 전송하지 않는다&lt;/li&gt;
+      &lt;li&gt;하지만 반송파가 감지되지 않으면 컴퓨터가 전송매체를 사용하지 않는 것으로 판단하여 데이터 를 전송한다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>qkrqjatn218</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="network" />
+      
+
+      
+        <summary type="html">#네트워크 명령어</summary>
       
 
       

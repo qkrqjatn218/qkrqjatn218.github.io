@@ -1,4 +1,120 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-12-28T21:19:28+09:00</updated><id>/</id><title type="html">Oaktree_lab</title><subtitle>review and share</subtitle><entry><title type="html">network(2)</title><link href="/network(2)" rel="alternate" type="text/html" title="network(2)" /><published>2020-12-13T00:00:00+09:00</published><updated>2020-12-13T00:00:00+09:00</updated><id>/network(2)</id><content type="html" xml:base="/network(2)">&lt;p&gt;&lt;strong&gt;#IP&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-01-22T17:10:08+09:00</updated><id>/</id><title type="html">Oaktree_lab</title><subtitle>review and share</subtitle><entry><title type="html">자료구조의 개요</title><link href="/data-structure" rel="alternate" type="text/html" title="자료구조의 개요" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-22T00:00:00+09:00</updated><id>/data%20structure</id><content type="html" xml:base="/data-structure">&lt;h1 id=&quot;자료구조의-개요&quot;&gt;자료구조의 개요&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;자료구조(data structure)&lt;/p&gt;
+
+  &lt;p&gt;거대한 데이터를 효율적이고 빠르게 처리하기 위한 구조&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;책 한권을 찾으려면 지정한 위치에 놓는다&lt;/p&gt;
+
+&lt;p&gt;책 100권 중 한권을 찾으려면 &lt;strong&gt;책장&lt;/strong&gt;에 두고 찾는다&lt;/p&gt;
+
+&lt;p&gt;책 1000권 중 한권을 찾으려면 &lt;strong&gt;여러 책장&lt;/strong&gt;에 두고 &lt;strong&gt;순서&lt;/strong&gt;와 &lt;strong&gt;위치&lt;/strong&gt;를 지정해 두고 찾는다..&lt;/p&gt;
+
+&lt;p&gt;​                                                       ‘’’’’&lt;/p&gt;
+
+&lt;p&gt;이처럼 적은 양의 데이터는 찾기 쉽지만 많은 양의 데이터는 찾기가 쉽지 않다. 그래서 &lt;strong&gt;그룹(group)&lt;/strong&gt;을 만들고 &lt;strong&gt;색인(index)&lt;/strong&gt;과 &lt;strong&gt;값(value)&lt;/strong&gt;을 지정해서 빠르게 찾을 수 있도록 한다. 여기서  배열(array)와 리스트(list)라는 개념이 고안되었다.&lt;/p&gt;
+
+&lt;p&gt;​														‘’’’’&lt;/p&gt;
+
+&lt;p&gt;배열과 리스트의 기본적인 개념과 차이에 대해 알아보자&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;___ ____ ____ ____ ____ ____
+10 | 20 | 30 | 40 | 50 | 60 | -&amp;gt; value  
+0  | 1  | 2  | 3  | 4  | 5  | -&amp;gt; index	
+int int  int  int  int  int   -&amp;gt; element(value + index); 요소는 값과 인덱스를 포함한 구조
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;배열&lt;/th&gt;
+      &lt;th&gt;리스트&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;추가&lt;/td&gt;
+      &lt;td&gt;해당인덱스 원래값에 추가한 데이터를 덮어씀&lt;/td&gt;
+      &lt;td&gt;들어가고 싶은 순서에 있는 요소들을 한칸씩 뒤로넣고 해당자리에 들어감&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;삭제&lt;/td&gt;
+      &lt;td&gt;껍데기는 있지만 값은 없어짐(비어있는 저장공간 O,인덱스 존재)&lt;/td&gt;
+      &lt;td&gt;요소가 없어지고, 그 자리에 다음 요소가 옴(비어있는 저장공간 X)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;​															‘’’’’’’&lt;/p&gt;
+
+&lt;p&gt;자료구조는 프로그래밍 언어마다 지원하는 양상이 다르다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C 언어는 리스트를 지원하지 않음
+java는 배열과 리스트를 둘 다 지원하고 리스트는 array list와 linked list로 나누어짐
+python은 리스트를 지원(라이브러리를 통해 배열사용가능)
+....
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;​															  “”””&lt;/p&gt;
+
+&lt;p&gt;기본적인 자료구조들&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;선형구조&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;배열&lt;/li&gt;
+      &lt;li&gt;연결 리스트&lt;/li&gt;
+      &lt;li&gt;스택&lt;/li&gt;
+      &lt;li&gt;큐&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;비선형구조&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;
+        &lt;p&gt;트리(tree)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;그래프(graph)&lt;/p&gt;
+
+        &lt;p&gt;​										    	“”””&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;자료구조가 데이터의 표현하는 것이라고 한다면, &lt;strong&gt;알고리즘&lt;/strong&gt;은 표현된 데이터를 처리하는 것이라고 볼 수 있다.&lt;/p&gt;
+
+&lt;h1 id=&quot;알고리즘의-개요&quot;&gt;알고리즘의 개요&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;algorithm&lt;/p&gt;
+
+  &lt;p&gt;어떠한 문제해결을 위해 여러 방법들을 모색하고 결과를 도출하는 것&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;알고리즘은 궁극저으로, 문제의 해결을 기계로 실행하기 위한 것이다&lt;/p&gt;
+
+&lt;p&gt;알고리즘의 특징은 다음과 같다&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;입력은 0이상으로 없을수도 있다, 하지만 출력은 반드시 하나 이상 생성되어야한다&lt;/li&gt;
+  &lt;li&gt;유한성(finitenss): 여러작업은 반드시 유한한 시간내에 종료되어야 된다&lt;/li&gt;
+  &lt;li&gt;명확성(definiteness): 각 단계는 명확해야 하며, 모호하지 말아야 한다&lt;/li&gt;
+  &lt;li&gt;유효성(effectiveness): 모든 명령은 실행가능 해야 함&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;효율적인 데이터의 처리를 위해선 알고리즘에 성능또한 중요하다. 성능을 분석하려면 기본적으로 수학적 배경지식을 필요로 한다&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;지수식 y = 2^x
+로그식 y = log2 (x)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>qkrqjatn218</name></author><category term="C" /><category term="programming" /><summary type="html">자료구조의 개요</summary></entry><entry><title type="html">network(2)</title><link href="/network(2)" rel="alternate" type="text/html" title="network(2)" /><published>2020-12-13T00:00:00+09:00</published><updated>2020-12-13T00:00:00+09:00</updated><id>/network(2)</id><content type="html" xml:base="/network(2)">&lt;p&gt;&lt;strong&gt;#IP&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;VLSM(variable length subnet mask)&lt;/li&gt;
@@ -634,38 +750,37 @@ netbios : 137~139 (udp)  IMAP(메일관련 프로토콜) : 143   SMB : 445
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;서브넷팅
+&lt;p&gt;```
+서브넷팅&lt;/p&gt;
 
-예 : 30개 pc를 사용하는 강의장에 ip 할당
+&lt;p&gt;예 : 30개 pc를 사용하는 강의장에 ip 할당&lt;/p&gt;
 
-A클래스 -&amp;gt; 1677만 호스트
-C 클래스 -&amp;gt; 254개 호스트
+&lt;p&gt;A클래스 -&amp;gt; 1677만 호스트
+C 클래스 -&amp;gt; 254개 호스트&lt;/p&gt;
 
-기존 클래스 방식은 비효율적
+&lt;p&gt;기존 클래스 방식은 비효율적&lt;/p&gt;
 
-서브넷팅을 통하여 ip를 절약!!!
+&lt;p&gt;서브넷팅을 통하여 ip를 절약!!!&lt;/p&gt;
 
-서브넷팅 : 네트워크를 반복적으로 1/2으로 분할해서 구함
+&lt;p&gt;서브넷팅 : 네트워크를 반복적으로 1/2으로 분할해서 구함&lt;/p&gt;
 
-------------------------------------------------------------------------------
-Prefix 표기법
+&lt;hr /&gt;
+&lt;p&gt;Prefix 표기법&lt;/p&gt;
 
-255.255.255.0          /24
-11111111.11111111.11111111.00000000
+&lt;p&gt;255.255.255.0          /24
+11111111.11111111.11111111.00000000&lt;/p&gt;
 
-255.255.0.0               /16
-11111111.11111111.00000000.00000000
+&lt;p&gt;255.255.0.0               /16
+11111111.11111111.00000000.00000000&lt;/p&gt;
 
-255.0.0.0            /8
-11111111.00000000.00000000.00000000
+&lt;p&gt;255.0.0.0            /8
+11111111.00000000.00000000.00000000&lt;/p&gt;
 
-
-255.255.255.0          /24
+&lt;p&gt;255.255.255.0          /24
 11111111.11111111.11111111.11100000
-퀴즈
+퀴즈&lt;/p&gt;
 
-
-255.255.252.0           /22
+&lt;p&gt;255.255.252.0           /22
 255.255.254.0          /23
 255.255.255.0          /24
 255.255.255.128   -&amp;gt;   /25
@@ -675,49 +790,7 @@ Prefix 표기법
                 248         /29
                 252      /30
                 254       /31
-                255       /32
-
------------------------------------------------
-
-CIDR 
-IP 주소 재할당방법
-
-CIDR = 서브넷팅 + 슈퍼넷팅 + Prefix
-
-------------------------------------------------
-
-실습 - 서브넷팅
-
-211.100.10.0 ~ 211.100.10.255의 C클래스 네트워크를 네트워크당 60개의 ip를 사용가능하도록 서브넷팅 하시오.
-
-1) 서브넷마스크는? 255.255.255.192
-
-서브넷 4개서술
-211.100.10.0/26 (211.100.10.0 ~ 211.100.10.63)
-211.100.10.64/26(211.100.10.64 ~ 211.100.10.127)
-211.100.10.128/26(211.100.10.128 ~ 211.100.10.191)
-211.100.10.192/26(211.100.10.192~ 211.100.10.255)
-
-2) 서브넷의 개수는 4개의 서브넷
-3) 네트워크당 ip 의 개수 : 64 -2  실제사용가능한건 62개
-4) 첫번째 서브넷의 브로드캐스트 주소는? 211.100.10.63
-5) 두번째 서브넷의 사용가능한 ip 범위는?
-211.100.10.65 ~ 211.100.10.126
-
-255.255.224.0/19
-11111111.11111111.11100000.0
-
-8192
-256*32
-.0.0 ~ .32.0 8192
-.33.0 ~ .64.0 8192
-.65.0 ~ .96.0 8192
-.97.0 ~ .128.0 8192
-129.0 ~ .160.0 
-161.0 ~ .192.0
-193.0 ~ .224.0
-225.0 ~ .255.0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>qkrqjatn218</name></author><category term="network" /><summary type="html">#무선 통신</summary></entry><entry><title type="html">network basic command</title><link href="/network-basic-command" rel="alternate" type="text/html" title="network basic command" /><published>2020-12-13T00:00:00+09:00</published><updated>2020-12-13T00:00:00+09:00</updated><id>/network%20basic%20command</id><content type="html" xml:base="/network-basic-command">&lt;p&gt;&lt;strong&gt;#네트워크 명령어&lt;/strong&gt;&lt;/p&gt;
+                255       /32&lt;/p&gt;</content><author><name>qkrqjatn218</name></author><category term="network" /><summary type="html">#무선 통신</summary></entry><entry><title type="html">network basic command</title><link href="/network-basic-command" rel="alternate" type="text/html" title="network basic command" /><published>2020-12-13T00:00:00+09:00</published><updated>2020-12-13T00:00:00+09:00</updated><id>/network%20basic%20command</id><content type="html" xml:base="/network-basic-command">&lt;p&gt;&lt;strong&gt;#네트워크 명령어&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
